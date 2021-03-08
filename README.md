@@ -13,7 +13,8 @@
 | first_name_kana    | string  | null: false               |
 | birthday           | date    | null: false               |
 | gender             | string  | null: false               |
-| profile            | text    |                            |
+| phone_number       | string  | null: false               |
+| profile            | text    |                           |
 
 
 ### Association
