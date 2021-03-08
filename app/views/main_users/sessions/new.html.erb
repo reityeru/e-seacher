@@ -6,7 +6,7 @@
       <%= form_with model: @main_user, url: main_user_session_path, local: true do |f| %>
         <%# メールアドレス入力欄 %>
         <div class="login-box-email">
-          <%= f.label :email, "Eメール" %>
+          <%= f.label :email, "メールアドレス" %>
           <span class="indispensable">（必須）</span><br />
           <%= f.email_field :email, autofocus: true %>
         </div>
