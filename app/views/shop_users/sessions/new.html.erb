@@ -1,26 +1,42 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="box">
+  <h1>店舗ユーザーログイン</h1>
+  <div class="box-innner">
+    <%# ログイン情報入力欄 %>
+    <div class="box-info">
+      <%= form_with model: @shop_user, url: shop_user_session_path, local: true do |f| %>
+        <%# メールアドレス入力欄 %>
+        <div class="box-email">
+          <%= f.label :email, "Eメール" %>
+          <span class="indispensable">（必須）</span><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+        <%# パスワード入力欄 %>
+        <div class="box-password">
+          <%= f.label :password, "パスワード" %>
+          <span class="indispensable">（必須）</span><br />
+          <%= f.password_field :password %>
+        </div>
+        <%# ログインボタン %>
+        <div class="actions">
+          <%= f.submit "Log in" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <%# リンク一覧 %>
+    <div class="box-link">
+      <%# ログイン画面切り替え %>
+      <div class="box-main-user">
+        <h3>※一般ユーザーはこちらから</h3>
+        <%= link_to "一般ユーザーログイン", new_main_user_session_path, method: :get %>
+      </div>
+      <%# 新規登録画面切り替え %>
+      <div class="box-sing-up">
+        <h3>※新規登録はこちらから</h3>
+        <%= link_to "一般ユーザー新規登録", new_main_user_registration_path, method: :get %><br />
+        <%= link_to "店舗ユーザー新規登録", new_shop_user_registration_path, method: :get %>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>
 
-<%= render "shop_users/shared/links" %>
+
