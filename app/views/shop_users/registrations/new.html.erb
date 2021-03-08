@@ -1,29 +1,86 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "shop_users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="singup-box">
+  <h1>店舗ユーザー新規登録</h1>
+  <div class="singup-box-inner">
+    <%= form_with model: @shop_user, url: shop_user_registration_path, local: true do |f| %>
+    <%= render "shop_users/shared/error_messages", resource: resource %>
+      <%# ユーザー名入力欄 %>
+      <div class="singup-box-shopname">
+        <label>ユーザー名</label>
+        <span class="indispensable">必須</span><br />
+        <%= f.text_field :shop_name, autofocus: true, placeholder:"例) イタリアンtest", maxlength:"40" %>
+      </div>
+      <%# メールアドレス入力欄 %>
+      <div class="singup-box-email">
+        <label>メールアドレス</label>
+        <span class="indispensable">必須</span><br />
+        <%= f.email_field :email, placeholder:"PC・携帯どちらでも可" %>
+      </div>
+      <%# パスワード入力欄 %>
+      <div class="singup-box-password">
+        <label>パスワード</label>
+        <span class="indispensable">必須</span><br />
+        <%= f.password_field :password, placeholder:"6文字以上の半角英数字" %>
+        <p>※英字と数字の両方を含めて設定してください</p>
+      </div>
+      <%# パスワード（確認用）入力欄 %>
+      <div class="singup-box-password">
+        <label>パスワード（確認）</label>
+        <span class="indispensable">必須</span><br />
+        <%= f.password_field :password_confirmation, placeholder:"同じパスワードを入力して下さい" %>
+      </div>
+      <%# 郵便番号入力欄 %>
+      <div class="singup-box-postalcode">
+        <label>郵便番号</label>
+        <span class="indispensable">必須</span><br />
+          <%= f.text_field :postal_code, placeholder:"例) 123-4567",maxlength:"8" %>
+      </div>
+      <%# 都道府県入力欄 %>
+      <div class="singup-box-prefecture">
+        <label>都道府県</label>
+        <span class="indispensable">必須</span><br />
+          <%= f.text_field :prefectures, placeholder:"例) 東京" %>
+      </div>
+      <%# 市町区村入力欄 %>
+      <div class="singup-box-city">
+        <label>市町区村</label>
+        <span class="indispensable">必須</span><br />
+          <%= f.text_field :city, placeholder:"例) 渋谷区" %>
+      </div>
+      <%# 番地入力欄 %>
+      <div class="singup-box-address">
+        <label>番地</label>
+        <span class="indispensable">必須</span><br />
+          <%= f.text_field :address, placeholder:"例) 青山1-1-1" %>
+      </div>
+      <%# 建物名入力欄 %>
+      <div class="singup-box-buildingname">
+        <label>建物名</label>
+        <span class="indispensable">任意</span><br />
+        <%= f.text_field :building_name, placeholder:"例）柳ビル103" %>
+      </div>
+      <%# ホームページリンク入力欄 %>
+      <div class="singup-box-shoplink">
+        <label>ホームページリンク</label>
+        <span class="indispensable">任意</span><br />
+        <%= f.text_field :shop_link %>
+      </div>
+      <%# 電話番号入力欄 %>
+      <div class="singup-box-phonenumber">
+        <label>電話番号</label>
+        <span class="indispensable">必須</span><br />
+        <%= f.text_field :phone_number, placeholder:"例）09012345678", maxlength:"11"%>
+      </div>
+      <%# プロフィール入力欄 %>
+      <div class="singup-box-profile">
+        <label>プロフィール</label>
+        <span class="indispensable">任意</span><br />
+        <%= f.text_area :profile,  maxlength:"300"%>
+      </div>
+      <%# 新規登録ボタン %>
+      <div class="actions">
+        <%= f.submit "新規登録" %>
+      </div>
+    <% end %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "shop_users/shared/links" %>
