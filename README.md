@@ -13,7 +13,7 @@
 | first_name_kana    | string  | null: false               |
 | birthday           | date    | null: false               |
 | gender_id          | integer | null: false               |
-| profile            | text    | null: false               |
+| profile            | text    |                            |
 
 
 ### Association
@@ -37,7 +37,7 @@
 | city_id            | integer | null: false               |
 | address            | string  | null: false               |
 | building_name      | string  |                           |
-| profile            | text    | null: false               |
+| profile            | text    |                           |
 | shop_link          | string  |                           |
 
 ### Association
@@ -53,16 +53,16 @@
 
 ## main_user_tweetsテーブル
 
-| Column         | Type        | Options                       |
-| -------------- | ----------- | ----------------------------- |
-| shop_name      | string      | null: false                   |
-| text           | text        | null: false                   |
-| prefectures_id | integer     | null: false                   |
-| city_id        | integer     | null: false                   |
-| genres_id      | integer     | null: false                   |
-| take_out_id    | integer     | null: false                   |
-| main_user      | references  | null: false, foreign_key:true |
-| shop_user      | references  | foreign_key: true             |
+| Column         | Type        | Options                        |
+| -------------- | ----------- | ------------------------------ |
+| shop_name      | string      | null: false                    |
+| text           | text        | null: false                    |
+| prefectures_id | integer     | null: false                    |
+| city_id        | integer     | null: false                    |
+| genres_id      | integer     | null: false                    |
+| take_out_id    | integer     |                                |
+| main_user      | references  | null: false, foreign_key: true |
+| shop_user      | references  | null: false, foreign_key: true |
 
 ### Association
 
@@ -104,8 +104,8 @@
 | --------------- | ---------- | ------------------------------ |
 | comment         | text       | null: false                    |
 | main_user       | references | null: false, foreign_key: true |
-| main_user_tweet | references | foreign_key:true               |
-| shop_user_tweet | references | foreign_key: true              |
+| main_user_tweet | references | null: false, foreign_key: true |
+| shop_user_tweet | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -120,8 +120,8 @@
 | --------------- | ---------- | ------------------------------ |
 | comment         | text       | null: false                    |
 | shop_user       | references | null: false, foreign_key: true |
-| main_user_tweet | references | foreign_key:true               |
-| shop_user_tweet | references | foreign_key: true              |
+| main_user_tweet | references | null: false, foreign_key: true |
+| shop_user_tweet | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -227,10 +227,10 @@
 
 ## citiesテーブル
 
-| Column     | Type       | Options                      |
-| ---------- | ---------- | ---------------------------- |
-| name       | string     | null: false                  |
-| prefecture | references | null: false, foreign_key:true|
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ----------------------------   |
+| name       | string     | null: false                    |
+| prefecture | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -268,10 +268,10 @@
 
 ## main_user_tweet_payment_typeテーブル
 
-| Column          | Type       | Options                      |
-| --------------- | ---------- | ---------------------------- |
-| payment_type    | references | null: false, foreign_key:true|
-| main_user_tweet | references | null: false, foreign_key:true|
+| Column          | Type       | Options                       |
+| --------------- | ---------- | ----------------------------- |
+| payment_type    | references | null: false, foreign_key:true |
+| main_user_tweet | references | null: false, foreign_key:true |
 
 ### Association
 
