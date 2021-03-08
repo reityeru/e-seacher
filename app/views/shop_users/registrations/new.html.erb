@@ -32,26 +32,26 @@
       <div class="singup-box-postalcode">
         <label>郵便番号</label>
         <span class="indispensable">必須</span><br />
-          <%= f.text_field :postal_code, placeholder:"例) 123-4567",maxlength:"8" %>
+        <input type="text" name="postal_code" onKeyUp="AjaxZip3.zip2addr('postal_code', '', 'prefectures', 'city');"/>
       </div>
       <%# 都道府県入力欄 %>
       <div class="singup-box-prefecture">
         <label>都道府県</label>
         <span class="indispensable">必須</span><br />
-          <%= f.text_field :prefectures, placeholder:"例) 東京" %>
+        <input placeholder="例) 東京都" type="text" name="prefectures"/>
       </div>
       <%# 市町区村入力欄 %>
       <div class="singup-box-city">
         <label>市町区村</label>
         <span class="indispensable">必須</span><br />
-          <%= f.text_field :city, placeholder:"例) 渋谷区" %>
-      </div>
+        <input placeholder="例) 渋谷区" type="text" name="city"/>
       <%# 番地入力欄 %>
       <div class="singup-box-address">
         <label>番地</label>
         <span class="indispensable">必須</span><br />
           <%= f.text_field :address, placeholder:"例) 青山1-1-1" %>
       </div>
+
       <%# 建物名入力欄 %>
       <div class="singup-box-buildingname">
         <label>建物名</label>
