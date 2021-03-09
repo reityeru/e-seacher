@@ -31,7 +31,7 @@ RSpec.describe ShopUser, type: :model do
         @shop_user.shop_link = ''
         expect(@shop_user).to be_valid
       end
-      it '建物名が空でも登録できる' do
+      it 'building_nameが空でも登録できる' do
         @shop_user.building_name = ''
         expect(@shop_user).to be_valid
       end
