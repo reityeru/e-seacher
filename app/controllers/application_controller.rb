@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_any!
     if shop_user_signed_in?
-        true
+      
     else
         authenticate_main_user!
     end
