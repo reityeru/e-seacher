@@ -1,0 +1,45 @@
+<div class="login-box">
+  <h1>店舗ユーザーログイン</h1>
+  <div class="login-box-innner">
+    <%# ログイン情報入力欄 %>
+    <div class="login-box-info">
+      <%= form_with model: @shop_user, url: shop_user_session_path, local: true do |f| %>
+      <%# deivseのフラッシュメッセージを表示 %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+        <%# メールアドレス入力欄 %>
+        <div class="login-box-email">
+          <%= f.label :email, "Eメール" %>
+          <span class="indispensable">（必須）</span><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+        <%# パスワード入力欄 %>
+        <div class="login-box-password">
+          <%= f.label :password, "パスワード" %>
+          <span class="indispensable">（必須）</span><br />
+          <%= f.password_field :password %>
+        </div>
+        <%# ログインボタン %>
+        <div class="actions">
+          <%= f.submit "ログイン" %>
+        </div>
+      <% end %>
+    </div>
+    <%# リンク一覧 %>
+    <div class="login-box-link">
+      <%# ログイン画面切り替え %>
+      <div class="login-box-main-user">
+        <h3>※一般ユーザーはこちらから</h3>
+        <%= link_to "一般ユーザーログイン", new_main_user_session_path, method: :get %>
+      </div>
+      <%# 新規登録画面切り替え %>
+      <div class="login-box-sing-up">
+        <h3>※新規登録はこちらから</h3>
+        <%= link_to "一般ユーザー新規登録", new_main_user_registration_path, method: :get %><br />
+        <%= link_to "店舗ユーザー新規登録", new_shop_user_registration_path, method: :get %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
