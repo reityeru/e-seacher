@@ -24,4 +24,9 @@ class MainUser < ApplicationRecord
       validates :first_name_kana
     end
   end
+
+  has_many :main_user_tweets
+  has_many :goods
+  has_many :likes
+  has_many :main_user_comments
 end
