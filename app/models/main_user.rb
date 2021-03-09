@@ -24,6 +24,7 @@ class MainUser < ApplicationRecord
       validates :first_name_kana
     end
   end
+  validates :profile, length: { maximum: 300 }
 
   has_many :main_user_tweets
   has_many :goods
