@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2021_03_08_021137) do
     t.string "shop_name", null: false
     t.string "phone_number", null: false
     t.string "postal_code", null: false
-    t.integer "prefectures_id", null: false
-    t.integer "city_id", null: false
+    t.string "prefectures", null: false
+    t.string "city", null: false
     t.string "address", null: false
     t.string "building_name"
     t.text "profile"
