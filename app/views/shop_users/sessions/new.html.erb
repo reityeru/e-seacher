@@ -4,6 +4,9 @@
     <%# ログイン情報入力欄 %>
     <div class="login-box-info">
       <%= form_with model: @shop_user, url: shop_user_session_path, local: true do |f| %>
+      <%# deivseのフラッシュメッセージを表示 %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
         <%# メールアドレス入力欄 %>
         <div class="login-box-email">
           <%= f.label :email, "Eメール" %>
