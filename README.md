@@ -19,7 +19,6 @@
 
 ### Association
 
-- belongs_to :gender
 - has_many :main_user_tweets
 - has_many :goods
 - has_many :likes
@@ -43,10 +42,8 @@
 
 ### Association
 
-- belongs_to :prefectures
-- belongs_to :cities
 - has_many :shop_user_tweets
-- has_many :payment_types, through: shop_user_payment_type
+- has_many :payment_types, through: :shop_user_payment_type
 - has_many :shop_user_payment_types
 - has_many :main_user_tweets
 - has_many :shop_user_comments
@@ -77,7 +74,7 @@
 - has_many   :shop_user_comments
 - has_many   :goods
 - has_many   :likes
-- has_many   :payment_types, through: main_user_tweet_payment_type
+- has_many   :payment_types, through: :main_user_tweet_payment_type
 - has_many   :main_user_tweet_payment_types
 - has_many   :main_user_tweet_images
 
@@ -248,9 +245,9 @@
 
 ### Association
 
-- has_many   :main_user_tweets, through: main_user_tweet_payment_type
+- has_many   :main_user_tweets, through: :main_user_tweet_payment_type
 - has_many   :main_user_tweet_payment_types
-- has_many   :shop_users, through: shop_user_payment_type
+- has_many   :shop_users, through: :shop_user_payment_type
 - has_many   :shop_user_payment_type
 
 
