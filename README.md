@@ -176,19 +176,6 @@
 - belongs_to :shop_user_tweet
 
 
-
-## genders(active hash)テーブル
-
-| Column | Type   | Options     |
-| ------ | ------ | ----------- |
-| gender | string | null: false |
-
-
-### Association
-
-- has_many :main_users
-
-
 ## genres(active hash)テーブル
 
 | Column | Type   | Options     |
