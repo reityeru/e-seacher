@@ -34,8 +34,8 @@
 | email              | string  | null: false, unique: true |
 | phone_number       | string  | null: false               |
 | postal_code        | string  | null: false               |
-| prefectures_id     | integer | null: false               |
-| city_id            | integer | null: false               |
+| prefectures        | string  | null: false               |
+| city               | string  | null: false               |
 | address            | string  | null: false               |
 | building_name      | string  |                           |
 | profile            | text    |                           |
