@@ -237,7 +237,7 @@
 - has_many   :shop_user_payment_type
 
 
-## shop_user_payment_typeテーブル
+## shop_user_payment_typesテーブル
 
 | Column       | Type       | Options                       |
 | ------------ | ---------- | ----------------------------- |
@@ -250,7 +250,7 @@
 - belongs_to :payment_type
 
 
-## main_user_tweet_payment_typeテーブル
+## main_user_tweet_payment_typesテーブル
 
 | Column          | Type       | Options                       |
 | --------------- | ---------- | ----------------------------- |
