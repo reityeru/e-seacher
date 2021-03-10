@@ -1,0 +1,2 @@
+class ShopUserTweetsController < ApplicationController
+end
