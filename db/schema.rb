@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_08_021137) do
+ActiveRecord::Schema.define(version: 2021_03_10_013442) do
+
+  create_table "main_user_tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "shop_name", null: false
+    t.text "text", null: false
+    t.string "prefectures", null: false
+    t.string "city", null: false
+    t.integer "genres_id", null: false
+    t.string "take_out", null: false
+    t.bigint "main_user_id"
+    t.bigint "shop_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["main_user_id"], name: "index_main_user_tweets_on_main_user_id"
+    t.index ["shop_user_id"], name: "index_main_user_tweets_on_shop_user_id"
+  end
 
   create_table "main_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
@@ -54,4 +69,6 @@ ActiveRecord::Schema.define(version: 2021_03_08_021137) do
     t.index ["reset_password_token"], name: "index_shop_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "main_user_tweets", "main_users"
+  add_foreign_key "main_user_tweets", "shop_users"
 end
