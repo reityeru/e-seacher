@@ -71,6 +71,14 @@
         <span class="indispensable">必須</span><br />
         <%= f.text_field :phone_number, placeholder:"例）09012345678", maxlength:"11"%>
       </div>
+      <%# 支払い方法選択欄 %>
+      <div class="shop-user-payment_type">
+      <label>支払方法</label>
+        <span class="indispensable">任意</span><br />
+        <%= collection_check_boxes(:shop_user, :payment_type_ids, PaymentType.all, :id, :payment_type) do |b| %>
+        <%= b.label { b.check_box + b.text } %>
+        <% end %>
+      </div>
       <%# プロフィール入力欄 %>
       <div class="singup-box-profile">
         <label>プロフィール</label>

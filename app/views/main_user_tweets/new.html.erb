@@ -8,7 +8,7 @@
         <span class="indispensable">必須</span><br />
         <%= f.text_field :shop_name, autofocus: true, placeholder:"例) イタリアンtest" %>
       </div>
-      <%# 店舗名入力欄 %>
+      <%# 口コミ入力欄 %>
       <div class="main-user-tweet-text">
       <label>口コミ</label>
         <span class="indispensable">必須</span><br />
@@ -41,6 +41,14 @@
       <label>料理ジャンル</label>
         <span class="indispensable">必須</span><br />
         <%= f.collection_select(:genres_id, Genre.all, :id, :name, {}, {class:"genre-select"}) %>
+      </div>
+      <%# 支払い方法選択欄 %>
+      <div class="main-user-tweet-payment_type">
+      <label>支払方法</label>
+        <span class="indispensable">任意</span><br />
+        <%= collection_check_boxes(:main_user_tweet, :payment_type_ids, PaymentType.all, :id, :payment_type) do |b| %>
+        <%= b.label { b.check_box + b.text } %>
+        <% end %>
       </div>
       <%# テイクアウト選択欄 %>
       <div class="main-user-tweet-takeout">
