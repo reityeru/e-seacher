@@ -66,7 +66,6 @@
 
 - belongs_to :main_user
 - belongs_to :genre
-- belongs_to :take_out
 - belongs_to :shop_user
 - belongs_to :prefecture
 - belongs_to :citie
