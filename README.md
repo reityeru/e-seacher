@@ -55,12 +55,12 @@
 | -------------- | ----------- | ------------------------------ |
 | shop_name      | string      | null: false                    |
 | text           | text        | null: false                    |
-| prefectures_id | integer     | null: false                    |
-| city_id        | integer     | null: false                    |
+| prefectures    | string      | null: false                    |
+| city           | string      | null: false                    |
 | genres_id      | integer     | null: false                    |
-| take_out_id    | integer     |                                |
+| take_out       | string      | null: false                    |
 | main_user      | references  | null: false, foreign_key: true |
-| shop_user      | references  | null: false, foreign_key: true |
+| shop_user      | references  | foreign_key: true              |
 
 ### Association
 
