@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_10_080755) do
+ActiveRecord::Schema.define(version: 2021_03_10_102901) do
+
+  create_table "main_user_tweet_payment_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "main_user_tweet_id"
+    t.bigint "payment_type_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["main_user_tweet_id"], name: "index_main_user_tweet_payment_types_on_main_user_tweet_id"
+    t.index ["payment_type_id"], name: "index_main_user_tweet_payment_types_on_payment_type_id"
+  end
 
   create_table "main_user_tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "shop_name", null: false
@@ -48,6 +57,21 @@ ActiveRecord::Schema.define(version: 2021_03_10_080755) do
     t.index ["reset_password_token"], name: "index_main_users_on_reset_password_token", unique: true
   end
 
+  create_table "payment_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "payment_type", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shop_user_payment_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "shop_user_id"
+    t.bigint "payment_type_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["payment_type_id"], name: "index_shop_user_payment_types_on_payment_type_id"
+    t.index ["shop_user_id"], name: "index_shop_user_payment_types_on_shop_user_id"
+  end
+
   create_table "shop_user_tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text", null: false
     t.bigint "shop_user_id"
@@ -77,7 +101,11 @@ ActiveRecord::Schema.define(version: 2021_03_10_080755) do
     t.index ["reset_password_token"], name: "index_shop_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "main_user_tweet_payment_types", "main_user_tweets"
+  add_foreign_key "main_user_tweet_payment_types", "payment_types"
   add_foreign_key "main_user_tweets", "main_users"
   add_foreign_key "main_user_tweets", "shop_users"
+  add_foreign_key "shop_user_payment_types", "payment_types"
+  add_foreign_key "shop_user_payment_types", "shop_users"
   add_foreign_key "shop_user_tweets", "shop_users"
 end
