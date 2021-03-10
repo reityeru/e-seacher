@@ -18,8 +18,8 @@ class ShopUser < ApplicationRecord
   validates :profile, length: { maximum: 300 }
 
   has_many :shop_user_tweets
-  has_many :payment_types, through: :shop_user_payment_type
   has_many :shop_user_payment_types
+  has_many :payment_types, through: :shop_user_payment_types
   has_many :main_user_tweets
   has_many :shop_user_comments
 end
