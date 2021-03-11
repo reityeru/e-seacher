@@ -58,7 +58,7 @@
 | prefectures    | string      | null: false                    |
 | city           | string      | null: false                    |
 | genres_id      | integer     | null: false                    |
-| take_out       | string      | null: false                    |
+| take_out       | string      |                                |
 | main_user      | references  | null: false, foreign_key: true |
 | shop_user      | references  | foreign_key: true              |
 
