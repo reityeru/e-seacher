@@ -152,17 +152,6 @@
 - belongs_to :main_user
 - belongs_to :main_user_tweet
 
-## main_user_tweet_imagesテーブル
-
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| scr             | string     | null: false                    |
-| main_user_tweet | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :main_user_tweet
-
 
 ## shop_user_tweet_imagesテーブル
 
