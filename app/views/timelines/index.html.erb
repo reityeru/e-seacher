@@ -7,3 +7,9 @@
       <li><%= link_to current_main_user.nickname, "#", class: "user-nickname" %></li>
     <% end %>
 </ul>
+
+<% if shop_user_signed_in? %>
+  <%= link_to '口コミ投稿', new_shop_user_tweet_path, class: "user_tweet" %>
+<% else %> 
+  <%= link_to '口コミ投稿', new_main_user_tweet_path, class: "user_tweet" %>
+<% end %>
