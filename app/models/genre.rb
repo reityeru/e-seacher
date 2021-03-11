@@ -45,5 +45,5 @@ class Genre < ActiveHash::Base
 
 
   include ActiveHash::Associations
-  has_many :main_user_tweet
-  end
+  has_many :main_user_tweets
+end
