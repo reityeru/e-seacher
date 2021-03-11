@@ -23,7 +23,7 @@ RSpec.describe MainUserTweet, type: :model do
         @main_user_tweet.shop_user = nil
         expect(@main_user_tweet).to be_valid
       end
-      it 'imagesが空でも投稿できる' do
+      it 'main_user_tweet_imagesが空でも投稿できる' do
         @main_user_tweet.main_user_tweet_images = nil
         expect(@main_user_tweet).to be_valid
       end

@@ -17,7 +17,7 @@ class ShopUserTweetsController < ApplicationController
 
   private
   def shop_user_tweet_params
-    params.require(:shop_user_tweet).permit(:text).merge(shop_user_id: current_shop_user.id)
+    params.require(:shop_user_tweet).permit(:text, shop_user_tweet_images: []).merge(shop_user_id: current_shop_user.id)
   end
   
 end
