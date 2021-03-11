@@ -8,8 +8,38 @@
     <% end %>
 </ul>
 
-<% if shop_user_signed_in? %>
-  <%= link_to '口コミ投稿', new_shop_user_tweet_path, class: "user_tweet" %>
-<% else %> 
-  <%= link_to '口コミ投稿', new_main_user_tweet_path, class: "user_tweet" %>
-<% end %>
+<div class="tweet-btn">
+  <% if shop_user_signed_in? %>
+    <%= link_to '口コミ投稿', new_shop_user_tweet_path, class: "user_tweet" %>
+  <% else %> 
+    <%= link_to '口コミ投稿', new_main_user_tweet_path, class: "user_tweet" %>
+  <% end %>
+</div>
+<div>
+  <% @tweets.each do |tweet| %>
+    <% if tweet.class == MainUserTweet %>
+      <%# MainUserTweetの表示 %> 
+      <%= tweet.shop_name %>
+      <%= tweet.text %>
+      <%= tweet.prefectures %>
+      <%= tweet.city %>
+      <%= tweet.genre.name %>
+      <div class="tweet-images">
+        <% tweet.main_user_tweet_images.each do |image| %>
+          <%= image_tag image.variant(resize: '300x300') %>
+        <% end %>
+      </div>
+      <%= tweet.main_user.nickname %>
+    <% else %>
+      <%# ShopUserTweetの表示 %> 
+      <%= tweet.text %>
+      <div class="tweet-images">
+        <% tweet.shop_user_tweet_images.each do |image| %>
+          <%= image_tag image.variant(resize: '300x300') %>
+        <% end %>
+      </div>
+      <%= tweet.shop_user.shop_name %>
+    <% end %>
+
+  <% end %>
+</div>

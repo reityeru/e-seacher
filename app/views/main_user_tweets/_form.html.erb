@@ -39,7 +39,7 @@
       <div class="main-user-tweet-genres">
       <label>料理ジャンル</label>
         <span class="indispensable">必須</span><br />
-        <%= f.collection_select(:genres_id, Genre.all, :id, :name, {}, {class:"genre-select"}) %>
+        <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"genre-select"}) %>
       </div>
       <%# 支払い方法選択欄 %>
       <div class="main-user-tweet-payment_type">

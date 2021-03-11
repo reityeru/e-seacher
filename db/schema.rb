@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_03_11_024411) do
     t.text "text", null: false
     t.string "prefectures", null: false
     t.string "city", null: false
-    t.integer "genres_id", null: false
+    t.integer "genre_id", null: false
     t.string "take_out", null: false
     t.bigint "main_user_id"
     t.bigint "shop_user_id"
