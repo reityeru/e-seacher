@@ -4,8 +4,7 @@ class MainUserTweet < ApplicationRecord
     validates :text, length: { maximum: 300 }
     validates :prefectures
     validates :city
-    validates :genres_id
-    validates :take_out
+    validates :genres_id, numericality: { other_than: 1 }
   end
 
   belongs_to :main_user
