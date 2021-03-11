@@ -8,7 +8,7 @@ class MainUserTweet < ApplicationRecord
     validates :take_out
   end
 
-
+  has_one_attached :image
   belongs_to :main_user
   belongs_to :shop_user, optional: true
   has_many   :main_user_comments

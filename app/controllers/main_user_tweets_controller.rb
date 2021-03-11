@@ -26,6 +26,6 @@ class MainUserTweetsController < ApplicationController
 
   private
   def main_user_tweet_params
-    params.require(:main_user_tweet).permit(:shop_name, :text, :prefectures, :city, :genres_id, :take_out, :shop_user, payment_type_ids:[]).merge(main_user_id: current_main_user.id)
+    params.require(:main_user_tweet).permit(:shop_name, :text, :prefectures, :city, :genres_id, :take_out, :shop_user, :image, payment_type_ids:[]).merge(main_user_id: current_main_user.id)
   end
 end
