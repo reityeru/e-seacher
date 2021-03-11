@@ -8,7 +8,6 @@ class MainUserTweet < ApplicationRecord
     validates :take_out
   end
 
-  has_one_attached :image
   belongs_to :main_user
   belongs_to :shop_user, optional: true
   has_many   :main_user_comments
@@ -18,6 +17,7 @@ class MainUserTweet < ApplicationRecord
   has_many   :main_user_tweet_payment_types
   has_many   :payment_types, through: :main_user_tweet_payment_types
   has_many   :main_user_tweet_images
+  has_many_attached :images
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :genre
