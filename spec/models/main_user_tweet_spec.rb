@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe MainUserTweet, type: :model do
   before do
     @main_user_tweet = FactoryBot.build(:main_user_tweet)
-    @main_user_tweet.images = fixture_file_upload('spec/fixtures/test_image.png', "spec/fixtures/test2_image.png")
+    @main_user_tweet.main_user_tweet_images = fixture_file_upload('spec/fixtures/test_image.png', "spec/fixtures/test2_image.png")
   end
 
   context '保存できる場合' do
@@ -24,7 +24,7 @@ RSpec.describe MainUserTweet, type: :model do
         expect(@main_user_tweet).to be_valid
       end
       it 'imagesが空でも投稿できる' do
-        @main_user_tweet.images = nil
+        @main_user_tweet.main_user_tweet_images = nil
         expect(@main_user_tweet).to be_valid
       end
 
