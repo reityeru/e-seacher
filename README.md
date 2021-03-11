@@ -75,7 +75,6 @@
 - has_many   :likes
 - has_many   :payment_types, through: :main_user_tweet_payment_type
 - has_many   :main_user_tweet_payment_types
-- has_many   :main_user_tweet_images
 - has_many_attached :images
 
 
@@ -92,7 +91,6 @@
 - belongs_to :shop_user
 - has_many   :shop_user_comments
 - has_many   :main_user_comments
-- has_many   :shop_user_tweet_images
 
 
 
@@ -153,18 +151,6 @@
 - belongs_to :main_user_tweet
 
 
-## shop_user_tweet_imagesテーブル
-
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| scr             | string     | null: false                    |
-| shop_user_tweet | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :shop_user_tweet
-
-
 ## genres(active hash)テーブル
 
 | Column | Type   | Options     |
@@ -176,16 +162,6 @@
 
 - has_many :main_user_tweets
 
-
-## take_out(active hash)テーブル
-
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| take_out | string | null: false |
-
-### Association
-
-- has_many :main_user_tweets
 
 ## prefecturesテーブル
 
