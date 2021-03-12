@@ -29,6 +29,9 @@ class MainUserTweetsController < ApplicationController
     @payment_types = PaymentType.find([@payment_type_id])
   end
 
+  def edit
+  end
+
   private
 
   def main_user_tweet_params
