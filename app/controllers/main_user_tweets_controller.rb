@@ -1,5 +1,6 @@
 class MainUserTweetsController < ApplicationController
   before_action :set_main_user_tweet, only: [:edit, :show, :update, :destroy]
+  before_action :move_to_index, only: [:edit, :destroy, :update]
 
   def new
     @main_user_tweet = MainUserTweet.new
@@ -29,6 +30,17 @@ class MainUserTweetsController < ApplicationController
     @payment_types = PaymentType.find([@payment_type_id])
   end
 
+  def edit
+  end
+
+  def update
+    if @main_user_tweet.update(main_user_tweet_params)
+      redirect_to main_user_tweet_path(@main_user_tweet.id)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def main_user_tweet_params
@@ -38,5 +50,13 @@ class MainUserTweetsController < ApplicationController
 
   def set_main_user_tweet
     @main_user_tweet = MainUserTweet.find(params[:id])
+  end
+
+  def move_to_index
+    if main_user_signed_in?
+      redirect_to root_path if current_main_user.id != @main_user_tweet.main_user_id
+    else
+      redirect_to root_path
+    end
   end
 end
