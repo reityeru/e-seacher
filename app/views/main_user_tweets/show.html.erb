@@ -27,8 +27,10 @@
         <% end %>
       </div>
       <div class="tweet-shoplink">
-        <% if @main_user_tweet.shop_user.shop_link.present? %>
-          <%= link_to "店舗リンク", @main_user_tweet.shop_user.shop_link, method: :get %>
+        <% if @main_user_tweet.shop_user.present? %>
+          <% if @main_user_tweet.shop_user.shop_link.present? %>
+            <%= link_to "店舗リンク", @main_user_tweet.shop_user.shop_link, method: :get %>
+          <% end %>
         <% end %>
       </div>
       <div class="tweet-select-btn">
