@@ -9,11 +9,11 @@ class MainUserTweet < ApplicationRecord
 
   belongs_to :main_user
   belongs_to :shop_user, optional: true
-  has_many   :main_user_comments
-  has_many   :shop_user_comments
-  has_many   :goods
-  has_many   :likes
-  has_many   :main_user_tweet_payment_types
+  has_many   :main_user_comments, dependent: :destroy
+  has_many   :shop_user_comments, dependent: :destroy
+  has_many   :goods, dependent: :destroy
+  has_many   :likes, dependent: :destroy
+  has_many   :main_user_tweet_payment_types, dependent: :destroy
   has_many   :payment_types, through: :main_user_tweet_payment_types
   has_many_attached :main_user_tweet_images
 
