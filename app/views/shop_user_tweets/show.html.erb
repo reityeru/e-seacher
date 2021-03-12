@@ -1,0 +1,37 @@
+<div class="show-box">
+  <div class="show-box-inner">
+    <div class="show-box-main">
+      <div class="tweet-shopname">
+        <%= @shop_user_tweet.shop_user.shop_name %>
+      </div>
+      <div class="tweet-text">
+        <%= @shop_user_tweet.text %>
+      </div>
+      <div class="shop-area">
+        <%= @shop_user_tweet.shop_user.prefectures %>
+        <span>,</span>
+        <%= @shop_user_tweet.shop_user.city %>
+      </div>
+      <div class="tweet-shoplink">
+        <%= link_to "店舗リンク", @shop_user_tweet.shop_user.shop_link, method: :get %>
+      </div>
+      <div class="tweet-select-btn">
+        <% if shop_user_signed_in? %>
+          <% if current_shop_user.id == @shop_user_tweet.shop_user_id %>
+            <%= link_to "編集", edit_shop_user_tweet_path(@shop_user_tweet.id), method: :get, class: "tweet-edit-btn" %>
+            <p class="or-text">or</p>
+            <%= link_to "削除", shop_user_tweet_path(@shop_user_tweet.id), method: :delete, class:"tweet-destroy" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="show-box-image">
+      <div class="tweet-images">
+        <% @shop_user_tweet.shop_user_tweet_images.each do |image| %>
+          <%= image_tag image.variant(resize: '300x300') %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

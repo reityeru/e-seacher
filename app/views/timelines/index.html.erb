@@ -19,27 +19,36 @@
   <% @tweets.each do |tweet| %>
     <% if tweet.class == MainUserTweet %>
       <%# MainUserTweetの表示 %> 
-      <%= tweet.shop_name %>
-      <%= tweet.text %>
-      <%= tweet.prefectures %>
-      <%= tweet.city %>
-      <%= tweet.genre.name %>
-      <div class="tweet-images">
-        <% tweet.main_user_tweet_images.each do |image| %>
-          <%= image_tag image.variant(resize: '300x300') %>
+      <div class="main_user_tweet">
+        <%= link_to main_user_tweet_path(tweet.id) do %>
+          <%= tweet.shop_name %><br />
+          <%= tweet.text %><br />
+          <%= tweet.prefectures %>
+          <%= tweet.city %><br />
+          <%= tweet.genre.name %><br />
+          <div class="tweet-images">
+            <% tweet.main_user_tweet_images.each do |image| %>
+              <%= image_tag image.variant(resize: '300x300') %>
+            <% end %>
+          </div>
+          <div class="user-name">
+            <%= tweet.main_user.nickname %>
+          </div>
         <% end %>
       </div>
-      <%= tweet.main_user.nickname %>
     <% else %>
       <%# ShopUserTweetの表示 %> 
-      <%= tweet.text %>
-      <div class="tweet-images">
-        <% tweet.shop_user_tweet_images.each do |image| %>
-          <%= image_tag image.variant(resize: '300x300') %>
+      <div class="shop-user-tweet">
+        <%= link_to shop_user_tweet_path(tweet.id) do %>
+          <%= tweet.text %>
+          <div class="tweet-images">
+            <% tweet.shop_user_tweet_images.each do |image| %>
+              <%= image_tag image.variant(resize: '300x300') %>
+            <% end %>
+          </div>
+          <%= tweet.shop_user.shop_name %>
         <% end %>
       </div>
-      <%= tweet.shop_user.shop_name %>
     <% end %>
-
   <% end %>
 </div>

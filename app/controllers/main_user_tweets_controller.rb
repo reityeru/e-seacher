@@ -1,4 +1,6 @@
 class MainUserTweetsController < ApplicationController
+  before_action :set_main_user_tweet, only: [:edit, :show, :update, :destroy]
+
   def new
     @main_user_tweet = MainUserTweet.new
   end
@@ -22,10 +24,19 @@ class MainUserTweetsController < ApplicationController
     end
   end
 
-
+  def show
+    @payment_type_id = @main_user_tweet.payment_type_ids
+    @payment_types = PaymentType.find([@payment_type_id])
+  end
 
   private
+
   def main_user_tweet_params
-    params.require(:main_user_tweet).permit(:shop_name, :text, :prefectures, :city, :genre_id, :take_out, :shop_user, main_user_tweet_images: [], payment_type_ids:[]).merge(main_user_id: current_main_user.id)
+    params.require(:main_user_tweet).permit(:shop_name, :text, :prefectures, :city, :genre_id, :take_out, :shop_user,
+                                            main_user_tweet_images: [], payment_type_ids: []).merge(main_user_id: current_main_user.id)
+  end
+
+  def set_main_user_tweet
+    @main_user_tweet = MainUserTweet.find(params[:id])
   end
 end

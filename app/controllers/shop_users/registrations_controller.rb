@@ -42,12 +42,14 @@ class ShopUsers::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:shop_name, :phone_number, :postal_code, :prefectures, :city, :address, :building_name, :profile, :shop_link])
+    devise_parameter_sanitizer.permit(:sign_up,
+                                      keys: [:shop_name, :phone_number, :postal_code, :prefectures, :city, :address,
+                                             :building_name, :profile, :shop_link])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
-      #devise_parameter_sanitizer.permit(:account_update, keys: [:shop_name, :phone_number, :postal_code, :prefectures, :city, :address, :building_name, :profile, :shop_link])
+  # devise_parameter_sanitizer.permit(:account_update, keys: [:shop_name, :phone_number, :postal_code, :prefectures, :city, :address, :building_name, :profile, :shop_link])
   # end
 
   # The path used after sign up.

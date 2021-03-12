@@ -80,7 +80,7 @@ RSpec.describe MainUser, type: :model do
         @main_user.valid?
         expect(@main_user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
-      it "passwordは半角英数字混合でなければ登録できないこと" do
+      it 'passwordは半角英数字混合でなければ登録できないこと' do
         @main_user.password = 'aaaaaa'
         @main_user.password_confirmation = 'aaaaaa'
         @main_user.valid?
@@ -92,7 +92,7 @@ RSpec.describe MainUser, type: :model do
         @main_user.valid?
         expect(@main_user.errors.full_messages).to include('Password is invalid')
       end
-      it "passwordは数字のみでは登録できないこと" do
+      it 'passwordは数字のみでは登録できないこと' do
         @main_user.password = '111111'
         @main_user.password_confirmation = '111111'
         @main_user.valid?
@@ -176,7 +176,7 @@ RSpec.describe MainUser, type: :model do
       it 'profileが301文字以上では登録できない' do
         @main_user.profile = 'あ' * 301
         @main_user.valid?
-        expect(@main_user.errors.full_messages).to include("Profile is too long (maximum is 300 characters)")
+        expect(@main_user.errors.full_messages).to include('Profile is too long (maximum is 300 characters)')
       end
     end
   end

@@ -84,19 +84,19 @@ RSpec.describe ShopUser, type: :model do
         @shop_user.valid?
         expect(@shop_user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
-      it "passwordは半角英数字混合でなければ登録できないこと" do
+      it 'passwordは半角英数字混合でなければ登録できないこと' do
         @shop_user.password = 'aaaaaa'
         @shop_user.password_confirmation = 'aaaaaa'
         @shop_user.valid?
         expect(@shop_user.errors.full_messages).to include('Password is invalid')
       end
-      it "passwordは全角では登録できないこと" do
+      it 'passwordは全角では登録できないこと' do
         @shop_user.password = 'ａａａａａａ'
         @shop_user.password_confirmation = 'ａａａａａ'
         @shop_user.valid?
         expect(@shop_user.errors.full_messages).to include('Password is invalid')
       end
-      it "passwordは数字のみでは登録できないこと" do
+      it 'passwordは数字のみでは登録できないこと' do
         @shop_user.password = '111111'
         @shop_user.password_confirmation = '111111'
         @shop_user.valid?
@@ -148,7 +148,7 @@ RSpec.describe ShopUser, type: :model do
       it 'profileが301文字以上では登録できない' do
         @shop_user.profile = 'あ' * 301
         @shop_user.valid?
-        expect(@shop_user.errors.full_messages).to include("Profile is too long (maximum is 300 characters)")
+        expect(@shop_user.errors.full_messages).to include('Profile is too long (maximum is 300 characters)')
       end
     end
   end

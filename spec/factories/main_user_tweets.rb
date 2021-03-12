@@ -9,5 +9,4 @@ FactoryBot.define do
     association :main_user
     association :shop_user
   end
-
 end
