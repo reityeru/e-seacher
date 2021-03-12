@@ -10,7 +10,7 @@
       <div class="tweet-text">
         <%= @main_user_tweet.text %>
       </div>
-      <div class="tweet-area">
+      <div class="shop-area">
         <%= @main_user_tweet.prefectures %>
         <span>,</span>
         <%= @main_user_tweet.city %>
@@ -30,10 +30,12 @@
         <%= link_to "店舗リンク", @main_user_tweet.shop_user.shop_link, method: :get %>
       </div>
       <div class="tweet-select-btn">
-        <% if current_main_user.id == @main_user_tweet.main_user_id %>
-          <%= link_to "編集", edit_main_user_tweet_path(@main_user_tweet.id), method: :get, class: "main-user-tweet-edit-btn" %>
-          <p class="or-text">or</p>
-          <%= link_to "削除", main_user_tweet_path(@main_user_tweet.id), method: :delete, class:"mian-user-tweet-destroy" %>
+        <% if main_user_signed_in? %>
+          <% if current_main_user.id == @main_user_tweet.main_user_id %>
+            <%= link_to "編集", edit_main_user_tweet_path(@main_user_tweet.id), method: :get, class: "tweet-edit-btn" %>
+            <p class="or-text">or</p>
+            <%= link_to "削除", main_user_tweet_path(@main_user_tweet.id), method: :delete, class:"tweet-destroy" %>
+          <% end %>
         <% end %>
       </div>
     </div>
