@@ -26,7 +26,7 @@ class MainUser < ApplicationRecord
   validates :profile, length: { maximum: 300 }
 
   has_many :main_user_tweets, dependent: :destroy
-  has_many :goods, dependent: :destroy
-  has_many :likes, dependent: :destroy
-  has_many :main_user_comments, dependent: :destroy
+  has_many :goods
+  has_many :likes
+  has_many :main_user_comments
 end
