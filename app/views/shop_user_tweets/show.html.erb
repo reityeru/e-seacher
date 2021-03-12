@@ -13,7 +13,9 @@
         <%= @shop_user_tweet.shop_user.city %>
       </div>
       <div class="tweet-shoplink">
-        <%= link_to "店舗リンク", @shop_user_tweet.shop_user.shop_link, method: :get %>
+        <% if @shop_user_tweet.shop_user.shop_link.present? %>
+          <%= link_to "店舗リンク", @shop_user_tweet.shop_user.shop_link, method: :get %>
+        <% end %>
       </div>
       <div class="tweet-select-btn">
         <% if shop_user_signed_in? %>
