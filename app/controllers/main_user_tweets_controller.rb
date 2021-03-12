@@ -41,6 +41,11 @@ class MainUserTweetsController < ApplicationController
     end
   end
 
+  def destroy
+    @main_user_tweet.destroy
+    redirect_to root_path
+  end
+
   private
 
   def main_user_tweet_params

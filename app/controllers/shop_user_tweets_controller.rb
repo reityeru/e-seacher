@@ -29,6 +29,11 @@ class ShopUserTweetsController < ApplicationController
     end
   end
 
+  def destroy
+    @shop_user_tweet.destroy
+    redirect_to root_path
+  end
+
   private
 
   def shop_user_tweet_params
