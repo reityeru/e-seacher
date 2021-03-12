@@ -25,6 +25,8 @@ class MainUserTweetsController < ApplicationController
   end
 
   def show
+    @payment_type_id = @main_user_tweet.payment_type_ids
+    @payment_types = PaymentType.find([@payment_type_id])
   end
 
   private

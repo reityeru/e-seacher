@@ -1,1 +1,49 @@
-<h1>詳細ページ</h1>
+<div class="show-box">
+  <div class="show-box-inner">
+    <div class="show-box-main">
+      <div class="tweet-shopname">
+        <%= @main_user_tweet.shop_name %>
+      </div>
+      <div class="tweet-user-name">
+        <%= @main_user_tweet.main_user.nickname %>
+      </div>
+      <div class="tweet-text">
+        <%= @main_user_tweet.text %>
+      </div>
+      <div class="tweet-area">
+        <%= @main_user_tweet.prefectures %>
+        <span>,</span>
+        <%= @main_user_tweet.city %>
+      </div>
+      <div class="tweet-genre">
+        <%= @main_user_tweet.genre.name %>
+      </div>
+      <div class="tweet-takeout">
+        <%= @main_user_tweet.take_out %>
+      </div>
+      <div class="tweet-paymenttype">
+        <% @payment_types.each do |payment_type| %>
+          <%= payment_type.payment_type %>
+        <% end %>
+      </div>
+      <div class="tweet-shoplink">
+        <%= link_to "店舗リンク", @main_user_tweet.shop_user.shop_link, method: :get %>
+      </div>
+      <div class="tweet-select-btn">
+        <% if current_main_user.id == @main_user_tweet.main_user_id %>
+          <%= link_to "編集", edit_main_user_tweet_path(@main_user_tweet.id), method: :get, class: "main-user-tweet-edit-btn" %>
+          <p class="or-text">or</p>
+          <%= link_to "削除", main_user_tweet_path(@main_user_tweet.id), method: :delete, class:"mian-user-tweet-destroy" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="show-box-image">
+      <div class="tweet-images">
+        <% @main_user_tweet.main_user_tweet_images.each do |image| %>
+          <%= image_tag image.variant(resize: '300x300') %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
