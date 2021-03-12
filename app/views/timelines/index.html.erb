@@ -21,11 +21,11 @@
       <%# MainUserTweetの表示 %> 
       <div class="main_user_tweet">
         <%= link_to main_user_tweet_path(tweet.id) do %>
-          <%= tweet.shop_name %>
-          <%= tweet.text %>
+          <%= tweet.shop_name %><br />
+          <%= tweet.text %><br />
           <%= tweet.prefectures %>
-          <%= tweet.city %>
-          <%= tweet.genre.name %>
+          <%= tweet.city %><br />
+          <%= tweet.genre.name %><br />
           <div class="tweet-images">
             <% tweet.main_user_tweet_images.each do |image| %>
               <%= image_tag image.variant(resize: '300x300') %>
