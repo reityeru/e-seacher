@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe MainUserTweet, type: :model do
   before do
     @main_user_tweet = FactoryBot.build(:main_user_tweet)
-    @main_user_tweet.main_user_tweet_images = fixture_file_upload('spec/fixtures/test_image.png', "spec/fixtures/test2_image.png")
+    @main_user_tweet.main_user_tweet_images = fixture_file_upload('spec/fixtures/test_image.png', 'spec/fixtures/test2_image.png')
   end
 
   context '保存できる場合' do
@@ -27,7 +27,6 @@ RSpec.describe MainUserTweet, type: :model do
         @main_user_tweet.main_user_tweet_images = nil
         expect(@main_user_tweet).to be_valid
       end
-
     end
 
     context '保存できない場合' do
@@ -45,7 +44,7 @@ RSpec.describe MainUserTweet, type: :model do
       it 'textが301文字以上では投稿できない' do
         @main_user_tweet.text = 'あ' * 301
         @main_user_tweet.valid?
-        expect(@main_user_tweet.errors.full_messages).to include("Text is too long (maximum is 300 characters)")
+        expect(@main_user_tweet.errors.full_messages).to include('Text is too long (maximum is 300 characters)')
       end
 
       it 'prefecturesが空では投稿できない' do

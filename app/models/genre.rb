@@ -40,10 +40,6 @@ class Genre < ActiveHash::Base
     { id: 38, name: 'その他' }
   ]
 
-
-
-
-
   include ActiveHash::Associations
   has_many :main_user_tweets
 end
