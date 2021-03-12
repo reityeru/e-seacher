@@ -54,12 +54,9 @@ class MainUserTweetsController < ApplicationController
 
   def move_to_index
     if main_user_signed_in?
-      if current_main_user.id != @main_user_tweet.main_user_id
-        redirect_to root_path 
-      end
+      redirect_to root_path if current_main_user.id != @main_user_tweet.main_user_id
     else
-      redirect_to root_path 
+      redirect_to root_path
     end
   end
-
 end
