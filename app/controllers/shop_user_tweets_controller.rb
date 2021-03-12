@@ -17,6 +17,9 @@ class ShopUserTweetsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
   private
 
   def shop_user_tweet_params
