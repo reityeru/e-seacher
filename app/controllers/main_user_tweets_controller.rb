@@ -32,6 +32,14 @@ class MainUserTweetsController < ApplicationController
   def edit
   end
 
+  def update
+    if @main_user_tweet.update(main_user_tweet_params)
+      redirect_to main_user_tweet_path(@main_user_tweet.id)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def main_user_tweet_params
