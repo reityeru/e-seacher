@@ -34,11 +34,10 @@ ActiveRecord::Schema.define(version: 2021_03_12_093028) do
   end
 
   create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "prefecture_id"
+    t.integer "prefecture_id"
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["prefecture_id"], name: "index_cities_on_prefecture_id"
   end
 
   create_table "main_user_tweet_payment_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -137,7 +136,6 @@ ActiveRecord::Schema.define(version: 2021_03_12_093028) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "cities", "prefectures"
   add_foreign_key "main_user_tweet_payment_types", "main_user_tweets"
   add_foreign_key "main_user_tweet_payment_types", "payment_types"
   add_foreign_key "main_user_tweets", "main_users"
