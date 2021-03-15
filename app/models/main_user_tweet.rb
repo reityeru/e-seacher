@@ -2,13 +2,15 @@ class MainUserTweet < ApplicationRecord
   with_options presence: true do
     validates :shop_name
     validates :text, length: { maximum: 300 }
-    validates :prefectures
-    validates :city
+    validates :prefecture_id
+    validates :city_id
     validates :genre_id, numericality: { other_than: 1 }
   end
 
   belongs_to :main_user
   belongs_to :shop_user, optional: true
+  belongs_to :prefecture
+  belongs_to :city
   has_many   :main_user_comments
   has_many   :shop_user_comments
   has_many   :goods

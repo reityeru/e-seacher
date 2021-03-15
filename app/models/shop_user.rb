@@ -8,8 +8,8 @@ class ShopUser < ApplicationRecord
     validates :shop_name
     validates :email, format: { with: /\A\S+@\S+\.\S+\z/ }
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
-    validates :prefectures
-    validates :city
+    validates :prefecture_id
+    validates :city_id
     validates :address
     validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
     validates :password_confirmation
@@ -17,6 +17,8 @@ class ShopUser < ApplicationRecord
   end
   validates :profile, length: { maximum: 300 }
 
+  belongs_to :prefecture
+  belongs_to :city
   has_many :shop_user_tweets, dependent: :destroy
   has_many :shop_user_payment_types, dependent: :destroy
   has_many :payment_types, through: :shop_user_payment_types

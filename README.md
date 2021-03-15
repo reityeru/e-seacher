@@ -33,8 +33,8 @@
 | email              | string  | null: false, unique: true |
 | phone_number       | string  | null: false               |
 | postal_code        | string  | null: false               |
-| prefectures        | string  | null: false               |
-| city               | string  | null: false               |
+| prefecture_id      | integer | null: false               |
+| city_id            | integer | null: false               |
 | address            | string  | null: false               |
 | building_name      | string  |                           |
 | profile            | text    |                           |
@@ -42,6 +42,8 @@
 
 ### Association
 
+- belongs_to :prefecture
+- belongs_to :city
 - has_many :shop_user_tweets
 - has_many :payment_types, through: :shop_user_payment_type
 - has_many :shop_user_payment_types
@@ -55,8 +57,8 @@
 | -------------- | ----------- | ------------------------------ |
 | shop_name      | string      | null: false                    |
 | text           | text        | null: false                    |
-| prefectures    | string      | null: false                    |
-| city           | string      | null: false                    |
+| prefecture_id  | integer     | null: false                    |
+| city_id        | integer     | null: false                    |
 | genres_id      | integer     | null: false                    |
 | take_out       | string      |                                |
 | main_user      | references  | null: false, foreign_key: true |
@@ -68,7 +70,7 @@
 - belongs_to :genre
 - belongs_to :shop_user
 - belongs_to :prefecture
-- belongs_to :citie
+- belongs_to :city
 - has_many   :main_user_comments
 - has_many   :shop_user_comments
 - has_many   :goods

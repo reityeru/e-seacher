@@ -11,9 +11,9 @@
         <%= @main_user_tweet.text %>
       </div>
       <div class="shop-area">
-        <%= @main_user_tweet.prefectures %>
+        <%= @main_user_tweet.prefecture.name %>
         <span>,</span>
-        <%= @main_user_tweet.city %>
+        <%= @main_user_tweet.city.name %>
       </div>
       <div class="tweet-genre">
         <%= @main_user_tweet.genre.name %>

@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 2021_03_12_093028) do
   create_table "main_user_tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "shop_name", null: false
     t.text "text", null: false
-    t.string "prefectures", null: false
-    t.string "city", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "city_id", null: false
     t.integer "genre_id", null: false
     t.string "take_out", null: false
     t.bigint "main_user_id"
@@ -118,8 +118,8 @@ ActiveRecord::Schema.define(version: 2021_03_12_093028) do
     t.string "shop_name", null: false
     t.string "phone_number", null: false
     t.string "postal_code", null: false
-    t.string "prefectures", null: false
-    t.string "city", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "city_id", null: false
     t.string "address", null: false
     t.string "building_name"
     t.text "profile"
