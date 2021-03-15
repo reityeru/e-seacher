@@ -8,9 +8,9 @@
         <%= @shop_user_tweet.text %>
       </div>
       <div class="shop-area">
-        <%= @shop_user_tweet.shop_user.prefectures %>
+        <%= @shop_user_tweet.shop_user.prefecture.name %>
         <span>,</span>
-        <%= @shop_user_tweet.shop_user.city %>
+        <%= @shop_user_tweet.shop_user.city.name %>
       </div>
       <div class="tweet-shoplink">
         <% if @shop_user_tweet.shop_user.shop_link.present? %>
