@@ -1,0 +1,37 @@
+<div class="result">
+ <% @result_tweets.each do |tweet| %>
+    <% if tweet.class == MainUserTweet %>
+      <%# MainUserTweetの表示 %> 
+      <div class="main_user_tweet">
+        <%= link_to main_user_tweet_path(tweet.id) do %>
+          <%= tweet.shop_name %><br />
+          <%= tweet.text %><br />
+          <%= tweet.prefecture.name %>
+          <%= tweet.city.name %><br />
+          <%= tweet.genre.name %><br />
+          <div class="tweet-images">
+            <% tweet.main_user_tweet_images.each do |image| %>
+              <%= image_tag image.variant(resize: '300x300') %>
+            <% end %>
+          </div>
+          <div class="user-name">
+            <%= tweet.main_user.nickname %>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <%# ShopUserTweetの表示 %> 
+      <div class="shop-user-tweet">
+        <%= link_to shop_user_tweet_path(tweet.id) do %>
+          <%= tweet.text %>
+          <div class="tweet-images">
+            <% tweet.shop_user_tweet_images.each do |image| %>
+              <%= image_tag image.variant(resize: '300x300') %>
+            <% end %>
+          </div>
+          <%= tweet.shop_user.shop_name %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
