@@ -22,8 +22,10 @@
         <%= @main_user_tweet.take_out %>
       </div>
       <div class="tweet-paymenttype">
-        <% @payment_types.each do |payment_type| %>
-          <%= payment_type.payment_type %>
+        <% if @payment_types.present? %>%
+          <% @payment_types.each do |payment_type| %>
+            <%= payment_type.payment_type %>
+          <% end %>
         <% end %>
       </div>
       <div class="tweet-shoplink">

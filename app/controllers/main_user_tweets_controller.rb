@@ -27,7 +27,9 @@ class MainUserTweetsController < ApplicationController
 
   def show
     @payment_type_id = @main_user_tweet.payment_type_ids
-    @payment_types = PaymentType.find([@payment_type_id])
+    if @payment_type_id.present?
+        @payment_types = PaymentType.find([@payment_type_id])
+    end
   end
 
   def edit
