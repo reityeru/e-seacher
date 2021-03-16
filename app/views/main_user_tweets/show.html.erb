@@ -11,9 +11,9 @@
         <%= @main_user_tweet.text %>
       </div>
       <div class="shop-area">
-        <%= @main_user_tweet.prefectures %>
+        <%= @main_user_tweet.prefecture.name %>
         <span>,</span>
-        <%= @main_user_tweet.city %>
+        <%= @main_user_tweet.city.name %>
       </div>
       <div class="tweet-genre">
         <%= @main_user_tweet.genre.name %>
@@ -22,8 +22,10 @@
         <%= @main_user_tweet.take_out %>
       </div>
       <div class="tweet-paymenttype">
-        <% @payment_types.each do |payment_type| %>
-          <%= payment_type.payment_type %>
+        <% if @payment_types.present? %>%
+          <% @payment_types.each do |payment_type| %>
+            <%= payment_type.payment_type %>
+          <% end %>
         <% end %>
       </div>
       <div class="tweet-shoplink">

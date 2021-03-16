@@ -7,8 +7,8 @@ class DeviseCreateShopUsers < ActiveRecord::Migration[6.0]
       t.string :shop_name,          null: false
       t.string :phone_number,       null: false
       t.string :postal_code,        null: false
-      t.string :prefectures,        null: false
-      t.string :city,               null: false
+      t.integer :prefecture_id,        null: false
+      t.integer :city_id,               null: false
       t.string :address,            null: false
       t.string :building_name
       t.text :profile

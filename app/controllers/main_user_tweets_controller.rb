@@ -27,7 +27,9 @@ class MainUserTweetsController < ApplicationController
 
   def show
     @payment_type_id = @main_user_tweet.payment_type_ids
-    @payment_types = PaymentType.find([@payment_type_id])
+    if @payment_type_id.present?
+        @payment_types = PaymentType.find([@payment_type_id])
+    end
   end
 
   def edit
@@ -49,7 +51,7 @@ class MainUserTweetsController < ApplicationController
   private
 
   def main_user_tweet_params
-    params.require(:main_user_tweet).permit(:shop_name, :text, :prefectures, :city, :genre_id, :take_out, :shop_user,
+    params.require(:main_user_tweet).permit(:shop_name, :text, :prefecture_id, :city_id, :genre_id, :take_out, :shop_user,
                                             main_user_tweet_images: [], payment_type_ids: []).merge(main_user_id: current_main_user.id)
   end
 

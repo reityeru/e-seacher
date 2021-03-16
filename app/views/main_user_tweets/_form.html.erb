@@ -22,17 +22,17 @@
       <%# エリア入力欄 %>
       <div class="main-user-tweet-area">
         <p>エリア</p>
-        <%# 都道府県入力欄 %>
+        <%# 都道府県入選択欄 %>
         <div class="main-user-tweet-prefectures">
           <label>都道府県</label>
           <span class="indispensable">必須</span><br />
-          <%= f.text_field :prefectures, placeholder: "東京都" %>
+          <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"prefectures-select"}) %>
         </div>
-        <%# 市町区村入力欄 %>
+        <%# 市町区村選択欄 %>
         <div class="main-user-tweet-city">
           <label>市町区村</label>
           <span class="indispensable">必須</span><br />
-          <%= f.text_field :city, placeholder: "渋谷区" %>
+          <%= f.collection_select(:city_id, City.all, :id, :name, {}, {class:"city-select"}) %>
         </div>
       </div>
       <%# 料理ジャンル選択欄 %>
