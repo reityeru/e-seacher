@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2021_03_12_093028) do
     t.integer "prefecture_id", null: false
     t.integer "city_id", null: false
     t.integer "genre_id", null: false
-    t.string "take_out", null: false
+    t.string "take_out"
     t.bigint "main_user_id"
     t.bigint "shop_user_id"
     t.datetime "created_at", precision: 6, null: false

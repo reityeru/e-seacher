@@ -6,7 +6,7 @@ class CreateMainUserTweets < ActiveRecord::Migration[6.0]
       t.integer :prefecture_id, null: false
       t.integer :city_id,       null: false
       t.integer :genre_id,      null: false
-      t.string :take_out,       null: false
+      t.string :take_out
       t.references :main_user,  foreign_key: true
       t.references :shop_user,  foreign_key: true
       t.timestamps
