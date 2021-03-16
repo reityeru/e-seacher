@@ -54,7 +54,20 @@
 </div>
 <div class="seach-form">
   <%= form_with(url: search_timelines_path, local: true, method: :get) do |form| %>
-  <%= form.text_field :keyword, placeholder: "投稿を検索する" %>
+  <%= form.text_field :keyword, placeholder: "投稿を検索する" %><br />
+  <label>都道府県</label><br />
+  <%= form.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"prefectures-select"}) %><br />
+  <label>市町区村</label><br />
+  <%= form.collection_select(:city_id, City.all, :id, :name, {}, {class:"city-select"}) %><br />
+  <label>料理ジャンル</label><br />
+  <%= form.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"genre-select"}) %><br />
+  <label>支払方法</label><br />
+  <%= form.collection_check_boxes(:payment_type_ids, PaymentType.all, :id, :payment_type, include_hidden: false) do |b| %>
+  <%= b.label { b.check_box + b.text } %>
+  <% end %><br />
+  <p>テイクアウト商品有無</p><br />
+  <label><%= form.radio_button :take_out, "有" %>有</label>
+  <label><%= form.radio_button :take_out, "無" %>無</label><br />
   <%= form.submit "検索", class: "search-btn" %>
 <% end %>
 </div>
