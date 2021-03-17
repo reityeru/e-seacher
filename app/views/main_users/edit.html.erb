@@ -1,8 +1,8 @@
 <div class="edit-box">
   <h1>一般ユーザー情報編集</h1>
   <div class="edit-box-inner">
-    <%= form_with model: main_user local: true do |f| %>
-    <%= render "main_users/shared/error_messages", resource: resource %>
+    <%= form_with model: @main_user, local: true do |f| %>
+    <%= render "main_users/shared/error_messages", resource: @main_user %>
       <%# ユーザー名入力欄 %>
       <div class="edit-box-nickname">
         <label>ユーザー名</label>
