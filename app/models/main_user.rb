@@ -8,8 +8,8 @@ class MainUser < ApplicationRecord
     validates :nickname
     validates :birthday
     validates :email, format: { with: /\A\S+@\S+\.\S+\z/ }
-    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
-    validates :password_confirmation
+    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }, on: :create
+    validates :password_confirmation, on: :create
     validates :gender
     validates :phone_number, format: { with: /\A\d{10,11}\z/ }
 
