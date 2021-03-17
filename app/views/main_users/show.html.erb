@@ -1,0 +1,39 @@
+<div>
+  <div>
+    <h3>ユーザー名：<%= @main_user.nickname %></h3>
+  </div>
+  <div class="user-select-btn">
+    <% if main_user_signed_in? %>
+      <% if current_main_user.id == @main_user.id %>
+        <%= link_to "ユーザー情報編集", edit_main_user_path(@main_user.id), method: :get, class: "user-edit-btn" %>
+          <p class="or-text">or</p>
+          <%= link_to "退会", main_user_path(@main_user.id), method: :delete, class:"user-destroy" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <p>プロフィール</p><%= @main_user.profile %>
+  </div>
+  <div>
+    <% if main_user_signed_in? %>
+      <% if current_main_user.id == @main_user.id %>
+        <p>自分の投稿</p>
+      <% end %>
+    <% else %>
+      <p>このユーザーの投稿</p>
+    <% end %>
+    <% @main_user_tweets.each do |tweet| %>
+      <div class="main_user_tweet">
+        <%= tweet.shop_name %><br />
+        <%= tweet.text %><br />
+        <%= tweet.prefecture.name %>
+        <%= tweet.city.name %><br />
+        <%= tweet.genre.name %><br />
+        <div class="tweet-images">
+          <% tweet.main_user_tweet_images.each do |image| %>
+            <%= image_tag image.variant(resize: '300x300') %>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
+</div>

@@ -2,9 +2,9 @@
 <ul class='lists-right'>
   <li><%= link_to 'ログアウト', destroy_main_user_session_path, method: :delete, class: "logout" %></li>
     <% if shop_user_signed_in? %>
-      <li><%= link_to current_shop_user.shop_name, "#", class: "user-nickname" %></li>
+      <li><%= link_to current_shop_user.shop_name, shop_user_path(current_shop_user.id), class: "user-nickname" %></li>
     <% else %>
-      <li><%= link_to current_main_user.nickname, "#", class: "user-nickname" %></li>
+      <li><%= link_to current_main_user.nickname, main_user_path(current_main_user.id), class: "user-nickname" %></li>
     <% end %>
 </ul>
 
@@ -31,10 +31,10 @@
               <%= image_tag image.variant(resize: '300x300') %>
             <% end %>
           </div>
-          <div class="user-name">
-            <%= tweet.main_user.nickname %>
-          </div>
         <% end %>
+          <div class="user-name">
+            <%= link_to tweet.main_user.nickname, main_user_path(tweet.main_user.id) %>
+          </div>
       </div>
     <% else %>
       <%# ShopUserTweetの表示 %> 
@@ -46,8 +46,10 @@
               <%= image_tag image.variant(resize: '300x300') %>
             <% end %>
           </div>
-          <%= tweet.shop_user.shop_name %>
         <% end %>
+        <div class="user-name">
+          <%= link_to tweet.shop_user.shop_name, shop_user_path(tweet.shop_user.id) %>
+        </div>
       </div>
     <% end %>
   <% end %>
