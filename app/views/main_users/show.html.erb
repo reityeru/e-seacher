@@ -1,6 +1,6 @@
 <div>
   <div>
-    <%= @main_user.nickname %>
+    <h3>ユーザー名：<%= @main_user.nickname %></h3>
   </div>
   <div class="user-select-btn">
     <% if main_user_signed_in? %>
@@ -12,9 +12,16 @@
     <% end %>
   </div>
   <div>
-    <%= @main_user.profile %>
+    <p>プロフィール</p><%= @main_user.profile %>
   </div>
   <div>
+    <% if main_user_signed_in? %>
+      <% if current_main_user.id == @main_user.id %>
+        <p>自分の投稿</p>
+      <% end %>
+    <% else %>
+      <p>このユーザーの投稿</p>
+    <% end %>
     <% @main_user_tweets.each do |tweet| %>
       <div class="main_user_tweet">
         <%= tweet.shop_name %><br />
