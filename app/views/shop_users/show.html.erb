@@ -1,0 +1,56 @@
+<div>
+  <div>
+    <h3>店舗名：<%= @shop_user.shop_name %></h3>
+  </div>
+  <div class="user-select-btn">
+    <% if shop_user_signed_in? %>
+      <% if current_shop_user.id == @shop_user.id %>
+        <%= link_to "ユーザー情報編集", edit_shop_user_path(@shop_user.id), method: :get, class: "user-edit-btn" %>
+          <p class="or-text">or</p>
+          <%= link_to "退会", shop_user_path(@shop_user.id), method: :delete, class:"user-destroy" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <p>店舗HPリンク：<%= @shop_user.shop_link %></p>
+  </div>
+  <div>
+    <p>プロフィール</p><%= @shop_user.profile %>
+  </div>
+  <div>
+    <p>住所</p>
+    <ul>
+      <li>郵便番号：<%= @shop_user.postal_code %></li>
+      <li>都道府県：<%= @shop_user.prefecture.name %></li>
+      <li>市町区村：<%= @shop_user.city.name %></li>
+      <li>番地：<%= @shop_user.address %></li>
+      <li>建物名：<%= @shop_user.building_name %></li>
+    </ul>
+  </div>
+  <div>
+    <p>連絡先</p>
+    <ul>
+      <li>電話番号：<%= @shop_user.phone_number %></li>
+      <li>メールアドレス：<%= @shop_user.email %></li>
+    </ul>
+  </div>
+  <div>
+    <% if shop_user_signed_in? %>
+      <% if current_shop_user.id == @shop_user.id %>
+        <p>自分の投稿</p>
+      <% end %>
+    <% else %>
+      <p>このユーザーの投稿</p>
+    <% end %>
+    <% @shop_user_tweets.each do |tweet| %>
+      <div class="shop_user_tweet">
+        <%= tweet.text %>
+        <div class="tweet-images">
+          <% tweet.shop_user_tweet_images.each do |image| %>
+            <%= image_tag image.variant(resize: '300x300') %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>  
+  </div>
+</div>
