@@ -11,8 +11,8 @@ class ShopUser < ApplicationRecord
     validates :prefecture_id
     validates :city_id
     validates :address
-    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
-    validates :password_confirmation
+    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }, on: :create
+    validates :password_confirmation, on: :create
     validates :phone_number, format: { with: /\A\d{10,11}\z/ }
   end
   validates :profile, length: { maximum: 300 }
