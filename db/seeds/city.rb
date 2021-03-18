@@ -1,5 +1,5 @@
 City.create!([
-  {prefecture_id: , name: "---"},
+  {name: "---"},
   {prefecture_id: 1, name: "札幌市中央区"},
   {prefecture_id: 1, name: "札幌市北区"},
   {prefecture_id: 1, name: "札幌市東区"},
