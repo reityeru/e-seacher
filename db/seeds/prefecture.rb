@@ -1,4 +1,5 @@
 Prefecture.create!([
+  {name: "---"},
   {name: "北海道"},
   {name: "青森県"},
   {name: "岩手県"},

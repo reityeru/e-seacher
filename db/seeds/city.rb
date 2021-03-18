@@ -1,4 +1,5 @@
 City.create!([
+  {prefecture_id: , name: "---"},
   {prefecture_id: 1, name: "札幌市中央区"},
   {prefecture_id: 1, name: "札幌市北区"},
   {prefecture_id: 1, name: "札幌市東区"},
@@ -1096,6 +1097,5 @@ City.create!([
   {prefecture_id: 23, name: "豊明市"},
   {prefecture_id: 23, name: "日進市"},
   {prefecture_id: 23, name: "田原市"},
-  {prefecture_id: 23, name: "愛西市"},
-  {prefecture_id: 23, name: "清須市"},
+  {prefecture_id: 23, name: "愛西市"}
 ])

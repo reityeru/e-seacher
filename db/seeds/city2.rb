@@ -1,4 +1,5 @@
 City.create!([
+  {prefecture_id: 23, name: "清須市"},
   {prefecture_id: 23, name: "北名古屋市"},
   {prefecture_id: 23, name: "弥富市"},
   {prefecture_id: 23, name: "みよし市"},
