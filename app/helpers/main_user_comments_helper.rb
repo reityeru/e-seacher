@@ -1,0 +1,2 @@
+module MainUserCommentsHelper
+end
