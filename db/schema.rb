@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_12_093028) do
+ActiveRecord::Schema.define(version: 2021_03_18_095525) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +38,18 @@ ActiveRecord::Schema.define(version: 2021_03_12_093028) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "main_user_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "comment", null: false
+    t.bigint "main_user_id"
+    t.bigint "main_user_tweet_id"
+    t.bigint "shop_user_tweet_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["main_user_id"], name: "index_main_user_comments_on_main_user_id"
+    t.index ["main_user_tweet_id"], name: "index_main_user_comments_on_main_user_tweet_id"
+    t.index ["shop_user_tweet_id"], name: "index_main_user_comments_on_shop_user_tweet_id"
   end
 
   create_table "main_user_tweet_payment_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -136,6 +148,9 @@ ActiveRecord::Schema.define(version: 2021_03_12_093028) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "main_user_comments", "main_user_tweets"
+  add_foreign_key "main_user_comments", "main_users"
+  add_foreign_key "main_user_comments", "shop_user_tweets"
   add_foreign_key "main_user_tweet_payment_types", "main_user_tweets"
   add_foreign_key "main_user_tweet_payment_types", "payment_types"
   add_foreign_key "main_user_tweets", "main_users"
