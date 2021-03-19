@@ -43,13 +43,12 @@ ActiveRecord::Schema.define(version: 2021_03_18_095525) do
   create_table "main_user_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "comment", null: false
     t.bigint "main_user_id"
-    t.bigint "main_user_tweet_id"
-    t.bigint "shop_user_tweet_id"
+    t.integer "main_usesr_tweet_commentable_id"
+    t.string "main_usesr_tweet_commentable_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["main_user_id"], name: "index_main_user_comments_on_main_user_id"
-    t.index ["main_user_tweet_id"], name: "index_main_user_comments_on_main_user_tweet_id"
-    t.index ["shop_user_tweet_id"], name: "index_main_user_comments_on_shop_user_tweet_id"
+    t.index ["main_usesr_tweet_commentable_type", "main_usesr_tweet_commentable_id"], name: "main_user_comments_index", unique: true
   end
 
   create_table "main_user_tweet_payment_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -148,9 +147,7 @@ ActiveRecord::Schema.define(version: 2021_03_18_095525) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "main_user_comments", "main_user_tweets"
   add_foreign_key "main_user_comments", "main_users"
-  add_foreign_key "main_user_comments", "shop_user_tweets"
   add_foreign_key "main_user_tweet_payment_types", "main_user_tweets"
   add_foreign_key "main_user_tweet_payment_types", "payment_types"
   add_foreign_key "main_user_tweets", "main_users"
