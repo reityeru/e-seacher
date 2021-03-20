@@ -8,6 +8,6 @@ class CreateMainUserComments < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    add_index :main_user_comments, [:main_usesr_tweet_commentable_type, :main_usesr_tweet_commentable_id], unique: true, name: 'main_user_comments_index'
+    add_index :main_user_comments, [:main_usesr_tweet_commentable_type, :main_usesr_tweet_commentable_id], name: 'main_user_comments_index'
   end
 end

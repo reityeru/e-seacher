@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2021_03_18_095525) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["main_user_id"], name: "index_main_user_comments_on_main_user_id"
-    t.index ["main_usesr_tweet_commentable_type", "main_usesr_tweet_commentable_id"], name: "main_user_comments_index", unique: true
+    t.index ["main_usesr_tweet_commentable_type", "main_usesr_tweet_commentable_id"], name: "main_user_comments_index"
   end
 
   create_table "main_user_tweet_payment_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
