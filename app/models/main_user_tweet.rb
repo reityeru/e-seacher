@@ -12,7 +12,7 @@ class MainUserTweet < ApplicationRecord
   belongs_to :prefecture
   belongs_to :city
   has_many   :main_user_comments, dependent: :destroy, as: :main_usesr_tweet_commentable
-  has_many   :shop_user_comments, dependent: :destroy
+  has_many   :shop_user_comments, dependent: :destroy, as: :shop_usesr_tweet_commentable
   has_many   :main_user_tweet_payment_types, dependent: :destroy
   has_many   :payment_types, through: :main_user_tweet_payment_types
   has_many_attached :main_user_tweet_images

@@ -23,5 +23,5 @@ class ShopUser < ApplicationRecord
   has_many :shop_user_payment_types, dependent: :destroy
   has_many :payment_types, through: :shop_user_payment_types
   has_many :main_user_tweets
-  has_many :shop_user_comments
+  has_many :shop_user_comments, dependent: :destroy
 end
