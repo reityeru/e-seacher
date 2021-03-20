@@ -1,4 +1,4 @@
-class ShopUserTweet::MainUserCommentsController < MainUserCommentsController  
+class ShopUserTweets::MainUserCommentsController < MainUserCommentsController  
   before_action :set_main_user_commentable, only: :create  
   private  
     def set_main_user_commentable  
