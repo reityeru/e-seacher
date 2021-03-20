@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_18_095525) do
+ActiveRecord::Schema.define(version: 2021_03_20_071610) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -108,6 +108,17 @@ ActiveRecord::Schema.define(version: 2021_03_18_095525) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "shop_user_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "comment", null: false
+    t.bigint "shop_user_id"
+    t.integer "shop_usesr_tweet_commentable_id"
+    t.string "shop_usesr_tweet_commentable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["shop_user_id"], name: "index_shop_user_comments_on_shop_user_id"
+    t.index ["shop_usesr_tweet_commentable_type", "shop_usesr_tweet_commentable_id"], name: "shop_user_comments_index"
+  end
+
   create_table "shop_user_payment_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "shop_user_id"
     t.bigint "payment_type_id"
@@ -152,6 +163,7 @@ ActiveRecord::Schema.define(version: 2021_03_18_095525) do
   add_foreign_key "main_user_tweet_payment_types", "payment_types"
   add_foreign_key "main_user_tweets", "main_users"
   add_foreign_key "main_user_tweets", "shop_users"
+  add_foreign_key "shop_user_comments", "shop_users"
   add_foreign_key "shop_user_payment_types", "payment_types"
   add_foreign_key "shop_user_payment_types", "shop_users"
   add_foreign_key "shop_user_tweets", "shop_users"
