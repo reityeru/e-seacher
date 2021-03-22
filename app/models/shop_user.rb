@@ -8,8 +8,6 @@ class ShopUser < ApplicationRecord
     validates :shop_name
     validates :email, format: { with: /\A\S+@\S+\.\S+\z/ }
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
-    validates :prefecture_id
-    validates :city_id
     validates :address
     validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }, on: :create
     validates :password_confirmation, on: :create
@@ -23,5 +21,5 @@ class ShopUser < ApplicationRecord
   has_many :shop_user_payment_types, dependent: :destroy
   has_many :payment_types, through: :shop_user_payment_types
   has_many :main_user_tweets
-  has_many :shop_user_comments
+  has_many :shop_user_comments, dependent: :destroy
 end

@@ -47,24 +47,24 @@ RSpec.describe MainUserTweet, type: :model do
         expect(@main_user_tweet.errors.full_messages).to include('Text is too long (maximum is 300 characters)')
       end
 
-      it 'prefecturesが空では投稿できない' do
-        @main_user_tweet.prefectures = ''
+      it 'prefectureが紐付いていないと投稿できないこと' do
+        @main_user_tweet.prefecture = nil
         @main_user_tweet.valid?
-        expect(@main_user_tweet.errors.full_messages).to include("Prefectures can't be blank")
+        expect(@main_user_tweet.errors.full_messages).to include("Prefecture must exist")
       end
-      it 'cityが空では投稿できない' do
-        @main_user_tweet.city = ''
+      it 'city紐付いていないと投稿できないこと' do
+        @main_user_tweet.city = nil
         @main_user_tweet.valid?
-        expect(@main_user_tweet.errors.full_messages).to include("City can't be blank")
-      end
-
-      it 'genresの選択が「---」では出品できないこと' do
-        @main_user_tweet.genres_id = 1
-        @main_user_tweet.valid?
-        expect(@main_user_tweet.errors.full_messages).to include('Genres must be other than 1')
+        expect(@main_user_tweet.errors.full_messages).to include("City must exist")
       end
 
-      it 'main_userが紐付いていないと保存できないこと' do
+      it 'genreの選択が「---」では投稿できないこと' do
+        @main_user_tweet.genre_id = 1
+        @main_user_tweet.valid?
+        expect(@main_user_tweet.errors.full_messages).to include('Genre must be other than 1')
+      end
+
+      it 'main_userが紐付いていないと投稿できないこと' do
         @main_user_tweet.main_user = nil
         @main_user_tweet.valid?
         expect(@main_user_tweet.errors.full_messages).to include('Main user must exist')

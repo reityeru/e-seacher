@@ -53,5 +53,31 @@
         <% end %>
       </div>
     </div>
+
+    <div class="comment">
+      <% if shop_user_signed_in? %> 
+        <%= render 'shared/shop_user_comment_form', shop_user_commentable: @main_user_tweet, shop_user_comment: @shop_user_comment %>
+      <% else %>
+        <%= render 'shared/main_user_comment_form', main_user_commentable: @main_user_tweet, main_user_comment: @main_user_comment %>
+      <% end %>
+    </div>
+    <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+      <% @comments.each do |comment| %>
+        <% if comment.class == MainUserComment %>
+          <p>
+            <strong><%= link_to comment.main_user.nickname, main_user_path(comment.main_user_id) %></strong>
+            <%= comment.comment %>
+          </p>
+          <% else %>
+            <p>
+              <strong><%= link_to comment.shop_user.shop_name, shop_user_path(comment.shop_user_id) %></strong>
+              <%= comment.comment %>
+            </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
   </div>
 </div>
+

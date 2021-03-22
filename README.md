@@ -71,8 +71,8 @@
 - belongs_to :shop_user
 - belongs_to :prefecture
 - belongs_to :city
-- has_many   :main_user_comments
-- has_many   :shop_user_comments
+- has_many   :main_user_comments, as: :main_usesr_tweet_commentable
+- has_many   :shop_user_comments, as: :main_usesr_tweet_commentable
 - has_many   :goods
 - has_many   :likes
 - has_many   :payment_types, through: :main_user_tweet_payment_type
@@ -91,41 +91,39 @@
 ### Association
 
 - belongs_to :shop_user
-- has_many   :shop_user_comments
-- has_many   :main_user_comments
+- has_many   :shop_user_comments, as: :shop_usesr_tweet_commentable
+- has_many   :main_user_comments, as: :shop_usesr_tweet_commentable
 
 
 
 ## main_user_commentsテーブル
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| comment         | text       | null: false                    |
-| main_user       | references | null: false, foreign_key: true |
-| main_user_tweet | references | null: false, foreign_key: true |
-| shop_user_tweet | references | null: false, foreign_key: true |
+| Column                            | Type       | Options                        |
+| ----------------------------------| ---------- | ------------------------------ |
+| comment                           | text       | null: false                    |
+| main_user                         | references | null: false, foreign_key: true |
+| main_usesr_tweet_commentable_id   | integer    | null: false, polymorphic: true |
+| main_usesr_tweet_commentable_type | string     | null: false, polymorphic: true |
 
 ### Association
 
 - belongs_to :main_user
-- belongs_to :main_user_tweet
-- belongs_to :shop_user_tweet
+- belongs_to :main_usesr_tweet_commentable,  polymorphic: true
 
 
 ## shop_user_commentsテーブル
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| comment         | text       | null: false                    |
-| shop_user       | references | null: false, foreign_key: true |
-| main_user_tweet | references | null: false, foreign_key: true |
-| shop_user_tweet | references | null: false, foreign_key: true |
+| Column                            | Type       | Options                        |
+| --------------------------------- | ---------- | ------------------------------ |
+| comment                           | text       | null: false                    |
+| shop_user                         | references | null: false, foreign_key: true |
+| shop_usesr_tweet_commentable_id   | integer    | null: false, polymorphic: true |
+| shop_usesr_tweet_commentable_type | string     | null: false, polymorphic: true |
 
 ### Association
 
 - belongs_to :shop_user
-- belongs_to :main_user_tweet
-- belongs_to :shop_user_tweet
+- belongs_to :shop_usesr_tweet_commentable,  polymorphic: true
 
 
 ## goodsテーブル
