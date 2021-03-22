@@ -2,8 +2,6 @@ class MainUserTweet < ApplicationRecord
   with_options presence: true do
     validates :shop_name
     validates :text, length: { maximum: 300 }
-    validates :prefecture_id
-    validates :city_id
     validates :genre_id, numericality: { other_than: 1 }
   end
 

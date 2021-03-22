@@ -51,6 +51,7 @@ RSpec.describe ShopUser, type: :model do
       end
       it '重複したemailが存在する場合登録できない' do
         @shop_user.save
+        binding.pry
         another_user = FactoryBot.build(:shop_user)
         another_user.email = @shop_user.email
         another_user.valid?
@@ -108,15 +109,15 @@ RSpec.describe ShopUser, type: :model do
         @shop_user.valid?
         expect(@shop_user.errors.full_messages).to include("Postal code can't be blank")
       end
-      it 'prefecturesが空では登録できない' do
-        @shop_user.prefectures = ''
+      it 'prefectureが紐付いていないと登録できない' do
+        @shop_user.prefecture = nil
         @shop_user.valid?
-        expect(@shop_user.errors.full_messages).to include("Prefectures can't be blank")
+        expect(@shop_user.errors.full_messages).to include("Prefecture must exist")
       end
-      it 'cityが空では登録できない' do
-        @shop_user.city = ''
+      it 'city紐付いていないと登録できない' do
+        @shop_user.city = nil
         @shop_user.valid?
-        expect(@shop_user.errors.full_messages).to include("City can't be blank")
+        expect(@shop_user.errors.full_messages).to include("City must exist")
       end
       it 'addressが空では登録できない' do
         @shop_user.address = ''
