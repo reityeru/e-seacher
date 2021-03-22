@@ -20,8 +20,8 @@ class MainUserCommentsController < ApplicationController
         redirect_to shop_user_tweet_path(@main_user_commentable.id)
       else
         @shop_user_tweet = @main_user_commentable
-        main_user_comments = @main_user_tweet.main_user_comments
-        shop_user_comments = @main_user_tweet.shop_user_comments
+        main_user_comments = @shop_user_tweet.main_user_comments
+        shop_user_comments = @shop_user_tweet.shop_user_comments
         @comments = main_user_comments | shop_user_comments
         @comments.delete_if {|comment| comment.id == nil}
         @comments.sort! { |a, b| b.created_at <=> a.created_at }
