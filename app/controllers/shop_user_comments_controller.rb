@@ -17,7 +17,7 @@ class ShopUserCommentsController < ApplicationController
       if @shop_user_comment.save 
         redirect_to shop_user_tweet_path(@shop_user_commentable.id)
       else
-        @shop_user_tweet = @main_user_commentable
+        @shop_user_tweet = @shop_user_commentable
         main_user_comments = @shop_user_tweet.main_user_comments
         shop_user_comments = @shop_user_tweet.shop_user_comments
         @comments = main_user_comments | shop_user_comments
