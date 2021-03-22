@@ -31,10 +31,11 @@ class MainUserTweetsController < ApplicationController
         @payment_types = PaymentType.find([@payment_type_id])
     end
     @main_user_comment = MainUserComment.new
+    @shop_user_comment = ShopUserComment.new
     main_user_comments = @main_user_tweet.main_user_comments
-    #shop_user_comments = @main_user_tweet.shop_user_comments
-    @comments = main_user_comments #| shop_user_comments
-    #@comments.sort! { |a, b| b.created_at <=> a.created_at }
+    shop_user_comments = @main_user_tweet.shop_user_comments
+    @comments = main_user_comments | shop_user_comments
+    @comments.sort! { |a, b| b.created_at <=> a.created_at }
   end
 
   def edit
