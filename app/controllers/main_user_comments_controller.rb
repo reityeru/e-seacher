@@ -9,9 +9,10 @@ class MainUserCommentsController < ApplicationController
       else
         @main_user_tweet = @main_user_commentable
         main_user_comments = @main_user_tweet.main_user_comments
-        # shop_user_comments = @main_user_tweet.shop_user_comments
-        @comments = main_user_comments # | shop_user_comments
-        #@comments.sort! { |a, b| b.created_at <=> a.created_at }
+        shop_user_comments = @main_user_tweet.shop_user_comments
+        @comments = main_user_comments | shop_user_comments
+        @comments.delete_if {|comment| comment.id == nil}
+        @comments.sort! { |a, b| b.created_at <=> a.created_at }
         render "main_user_tweets/show"
       end
     else
@@ -22,6 +23,7 @@ class MainUserCommentsController < ApplicationController
         main_user_comments = @main_user_tweet.main_user_comments
         shop_user_comments = @main_user_tweet.shop_user_comments
         @comments = main_user_comments | shop_user_comments
+        @comments.delete_if {|comment| comment.id == nil}
         @comments.sort! { |a, b| b.created_at <=> a.created_at }
         render "shop_user_tweets/show"
       end
