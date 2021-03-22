@@ -69,11 +69,11 @@
             <strong><%= link_to comment.main_user.nickname, main_user_path(comment.main_user_id) %></strong>
             <%= comment.comment %>
           </p>
-          <%# else %>
-            <%#p>
-              <strong><%= link_to comment.shop_user.shop_name, shop_user(comment.shop_user_id) %><%#/strong>
-              <%#= comment.comment %>
-            <%#</p>%>
+          <% else %>
+            <p>
+              <strong><%= link_to comment.shop_user.shop_name, shop_user_path(comment.shop_user_id) %></strong>
+              <%= comment.comment %>
+            </p>
         <% end %>
       <% end %>
     </div>
