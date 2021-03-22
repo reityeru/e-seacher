@@ -1,0 +1,4 @@
+<%= form_with(model: [shop_user_commentable, shop_user_comment], local: true) do |form| %>
+  <%= form.text_area :comment, placeholder: "コメントする", rows: "2" %>
+  <%= form.submit "コメント" %>
+<% end %>
