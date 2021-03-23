@@ -26,7 +26,6 @@
   <dt>Basic認証</dt>
     <dd>ID:reityeru</dd>
     <dd>パス:5555</dd>
-  </dl>
   <dt>テスト用アカウント（一般ユーザー）</dt>
     <dd>メールアドレス:test@test1234.com</dd>
     <dd>パスワード:123qwe</dd>
