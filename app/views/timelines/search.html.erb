@@ -1,38 +1,50 @@
+<%# headerの表示 %> 
 <%= render partial: "shared/header" %>
-<div class="result">
- <% @result_tweets.each do |tweet| %>
-    <% if tweet.class == MainUserTweet %>
-      <%# MainUserTweetの表示 %> 
-      <div class="main_user_tweet">
-        <%= link_to main_user_tweet_path(tweet.id) do %>
-          <%= tweet.shop_name %><br />
-          <%= tweet.text %><br />
-          <%= tweet.prefecture.name %>
-          <%= tweet.city.name %><br />
-          <%= tweet.genre.name %><br />
-          <div class="tweet-images">
-            <% tweet.main_user_tweet_images.each do |image| %>
-              <%= image_tag image.variant(resize: '300x300') %>
-            <% end %>
-          </div>
+<div class="result-box">
+  <div class="result-title">
+    <h1>検索結果</h1>
+  </div>
+  <%# 検索結果の表示 %> 
+  <div class="result">
+    <% @result_tweets.each do |tweet| %>
+      <% if tweet.class == MainUserTweet %>
+        <%# MainUserTweetの表示 %> 
+        <div class="main-user-tweet">
+          <%= link_to main_user_tweet_path(tweet.id) do %>
+            <p class="tweet-shop-name">店舗名：<%= tweet.shop_name %></p>
+            <p class="tweet text"><%= tweet.text %></p>
+            <div class="tweet status">
+              <p class="tweet area">エリア：<%= tweet.prefecture.name %>
+              <%= tweet.city.name %></p>
+              <p class="tweet genre">ジャンル：<%= tweet.genre.name %></p><br />
+            </div>
+            <div class="tweet-images">
+              <% tweet.main_user_tweet_images.each do |image| %>
+                <%= image_tag image, class:"result-image" %>
+              <% end %>
+            </div>
+          <% end %>
           <div class="user-name">
-            <%= tweet.main_user.nickname %>
+            投稿ユーザー名：<%= link_to tweet.main_user.nickname, main_user_path(tweet.main_user.id), class:"user-name" %>
           </div>
-        <% end %>
-      </div>
-    <% else %>
-      <%# ShopUserTweetの表示 %> 
-      <div class="shop-user-tweet">
-        <%= link_to shop_user_tweet_path(tweet.id) do %>
-          <%= tweet.text %>
-          <div class="tweet-images">
-            <% tweet.shop_user_tweet_images.each do |image| %>
-              <%= image_tag image.variant(resize: '300x300') %>
-            <% end %>
+        </div>
+      <% else %>
+        <%# ShopUserTweetの表示 %> 
+        <div class="shop-user-tweet">
+          <div class="tweet-shop-name">
+            店舗名：<%= link_to tweet.shop_user.shop_name, shop_user_path(tweet.shop_user.id), class:"tweet-shop-name" %>
           </div>
-          <%= tweet.shop_user.shop_name %>
-        <% end %>
-      </div>
+          <%= link_to shop_user_tweet_path(tweet.id) do %>
+            <p class="tweet text"><%= tweet.text %></p>
+            <div class="tweet-images">
+              <% tweet.shop_user_tweet_images.each do |image| %>
+                <%= image_tag image, class:"result-image" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+
 </div>
