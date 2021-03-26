@@ -1,68 +1,108 @@
+<%# headerの表示 %> 
 <%= render partial: "shared/header" %>
-<h1>トップページ</h1>
-
-<div class="tweet-btn">
-  <% if shop_user_signed_in? %>
-    <%= link_to '口コミ投稿', new_shop_user_tweet_path, class: "user_tweet" %>
-  <% else %> 
-    <%= link_to '口コミ投稿', new_main_user_tweet_path, class: "user_tweet" %>
-  <% end %>
-</div>
-<div>
-  <% @tweets.each do |tweet| %>
-    <% if tweet.class == MainUserTweet %>
-      <%# MainUserTweetの表示 %> 
-      <div class="main_user_tweet">
-        <%= link_to main_user_tweet_path(tweet.id) do %>
-          <%= tweet.shop_name %><br />
-          <%= tweet.text %><br />
-          <%= tweet.prefecture.name %>
-          <%= tweet.city.name %><br />
-          <%= tweet.genre.name %><br />
-          <div class="tweet-images">
-            <% tweet.main_user_tweet_images.each do |image| %>
-              <%= image_tag image.variant(resize: '300x300') %>
+<div class="timeline-box">
+  <div class="timeline_inner-box">
+    <%# header以下の表示 %>   
+    <div class="timeline-main">
+      <%# タイムライン欄 %> 
+      <div class="timeline-left">
+        <div class="timeline-left-top">
+          <div class="timeline-home">
+            <h1>ホーム</h1>
+          </div>
+          <div class="tweet-btn">
+            <% if shop_user_signed_in? %>
+              <%= link_to '口コミ投稿', new_shop_user_tweet_path, class: "user-tweet-btn" %>
+            <% else %> 
+              <%= link_to '口コミ投稿', new_main_user_tweet_path, class: "user-tweet-btn" %>
             <% end %>
           </div>
-        <% end %>
-          <div class="user-name">
-            <%= link_to tweet.main_user.nickname, main_user_path(tweet.main_user.id) %>
-          </div>
-      </div>
-    <% else %>
-      <%# ShopUserTweetの表示 %> 
-      <div class="shop-user-tweet">
-        <%= link_to shop_user_tweet_path(tweet.id) do %>
-          <%= tweet.text %>
-          <div class="tweet-images">
-            <% tweet.shop_user_tweet_images.each do |image| %>
-              <%= image_tag image.variant(resize: '300x300') %>
+        </div>
+        <div class="timeline_list">
+          <% @tweets.each do |tweet| %>
+            <% if tweet.class == MainUserTweet %>
+              <%# MainUserTweetの表示 %> 
+              <div class="main-user-tweet">
+                <%= link_to main_user_tweet_path(tweet.id) do %>
+                  <p class="tweet-shop-name">店舗名：<%= tweet.shop_name %></p>
+                  <p class="tweet text"><%= tweet.text %></p>
+                  <div class="tweet status">
+                    <p class="tweet area">エリア：<%= tweet.prefecture.name %>
+                    <%= tweet.city.name %></p>
+                    <p class="tweet genre">ジャンル：<%= tweet.genre.name %></p><br />
+                  </div>
+                  <div class="tweet-images">
+                    <% tweet.main_user_tweet_images.each do |image| %>
+                      <%= image_tag image, class:"image" %>
+                    <% end %>
+                  </div>
+                <% end %>
+                <div class="user-name">
+                  投稿ユーザー名：<%= link_to tweet.main_user.nickname, main_user_path(tweet.main_user.id), class:"user-name" %>
+                </div>
+              </div>
+            <% else %>
+              <%# ShopUserTweetの表示 %> 
+              <div class="shop-user-tweet">
+                <div class="tweet-shop-name">
+                  店舗名：<%= link_to tweet.shop_user.shop_name, shop_user_path(tweet.shop_user.id), class:"tweet-shop-name" %>
+                </div>
+                <%= link_to shop_user_tweet_path(tweet.id) do %>
+                  <p class="tweet text"><%= tweet.text %></p>
+                    <div class="tweet-images">
+                      <% tweet.shop_user_tweet_images.each do |image| %>
+                        <%= image_tag image, class:"image" %>
+                      <% end %>
+                    </div>
+                <% end %>
+              </div>
             <% end %>
-          </div>
-        <% end %>
-        <div class="user-name">
-          <%= link_to tweet.shop_user.shop_name, shop_user_path(tweet.shop_user.id) %>
+          <% end %>
         </div>
       </div>
-    <% end %>
-  <% end %>
-</div>
-<div class="seach-form">
-  <%= form_with(url: search_timelines_path, local: true, method: :get) do |form| %>
-  <%= form.text_field :keyword, placeholder: "投稿を検索する" %><br />
-  <label>都道府県</label><br />
-  <%= form.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"prefectures-select"}) %><br />
-  <label>市町区村</label><br />
-  <%= form.collection_select(:city_id, City.all, :id, :name, {}, {class:"city-select"}) %><br />
-  <label>料理ジャンル</label><br />
-  <%= form.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"genre-select"}) %><br />
-  <label>支払方法</label><br />
-  <%= form.collection_check_boxes(:payment_type_ids, PaymentType.all, :id, :payment_type, include_hidden: false) do |b| %>
-  <%= b.label { b.check_box + b.text } %>
-  <% end %><br />
-  <p>テイクアウト商品有無</p><br />
-  <label><%= form.radio_button :take_out, "有" %>有</label>
-  <label><%= form.radio_button :take_out, "無" %>無</label><br />
-  <%= form.submit "検索", class: "search-btn" %>
-<% end %>
+      <%# 検索フォーム欄 %> 
+      <div class="timeline-right">
+        <div class="seach-title">
+          <h1>検索フォーム</h1>
+        </div>
+        <div class="seach-form">
+          <%= form_with(url: search_timelines_path, local: true, method: :get) do |form| %>
+            <div class="search-keyword">
+              <%= form.text_field :keyword, placeholder: "キーワード検索", class:"keyword" %>
+            </div>
+            <div class="search-area">
+              <div class="search-prefecture">
+                <label>都道府県</label><br />
+                <%= form.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"prefecture-select"}) %>
+              </div>
+              <div class="search-city">
+                <label>市町区村</label><br />
+                <%= form.collection_select(:city_id, City.all, :id, :name, {}, {class:"city-select"}) %>
+              </div>
+            </div>
+            <div class="search-genre">
+              <label>料理ジャンル</label><br />
+              <%= form.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"genre-select"}) %><br />
+            </div>
+            <div class="search-paymenttype">
+              <label>支払方法</label><br />
+              <%= form.collection_check_boxes(:payment_type_ids, PaymentType.all, :id, :payment_type, include_hidden: false) do |b| %>
+              <%= b.label { b.check_box + b.text } %>
+              <% end %>
+            </div>
+            <div class="search-takeout">
+              <p>テイクアウト商品有無</p>
+              <div class="takeout">
+                <label><%= form.radio_button :take_out, "有" %>有</label>
+                <label><%= form.radio_button :take_out, "無" %>無</label><br />
+              </div>
+            </div>
+            <div class="search-btn-box">
+              <%= form.submit "検索", class: "search-btn" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
