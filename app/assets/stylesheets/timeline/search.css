@@ -1,0 +1,23 @@
+.result-title {
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.result-title h1 {
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.result {
+  overflow: scroll;
+  height: 100vh;
+}
+
+.result-image {
+  border: 1px solid silver;
+  margin: 0 10px 20px 0;
+  width: 15%;
+  height: 150px;
+}
