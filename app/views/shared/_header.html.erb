@@ -1,9 +1,15 @@
-<ul class='lists-right'>
-  <li><%= link_to 'E-searcher', timelines_path, class: "title" %></li></li>
-  <li><%= link_to 'ログアウト', destroy_main_user_session_path, method: :delete, class: "logout" %></li>
-    <% if shop_user_signed_in? %>
-      <li><%= link_to current_shop_user.shop_name, shop_user_path(current_shop_user.id), class: "user-nickname" %></li>
-    <% else %>
-      <li><%= link_to current_main_user.nickname, main_user_path(current_main_user.id), class: "user-nickname" %></li>
-    <% end %>
-</ul>
+<div class="header">
+  <div class="header-left">
+    <%= link_to 'E-searcher', timelines_path, class: "title" %>
+  </div>
+  <div class="header-right">
+    <ul class='header-list'>
+        <% if shop_user_signed_in? %>
+          <li><%= link_to current_shop_user.shop_name, shop_user_path(current_shop_user.id), class: "user-nickname" %></li>
+        <% else %>
+          <li><%= link_to current_main_user.nickname, main_user_path(current_main_user.id), class: "user-nickname" %></li>
+        <% end %>
+        <li><%= link_to 'ログアウト', destroy_main_user_session_path, method: :delete, class: "logout" %></li>
+    </ul>
+  </div>
+</div>
