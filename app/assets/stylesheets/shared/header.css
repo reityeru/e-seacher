@@ -1,0 +1,39 @@
+.header {
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid silver;
+}
+
+.title {
+  margin-left: 20px;
+  padding: 10px;
+  font-size: 3vh;
+  background-color: limegreen;
+  color: white;
+  border-radius: 40px;
+  font-weight: bolder;
+}
+
+.header-list {
+  display: flex;
+  list-style: none;
+}
+
+.logout {
+  margin: 0 30px;
+  background-color: limegreen;
+  color: white;
+  border-radius: 40px;
+  font-weight: bolder;
+  padding: 10px;
+}
+
+.user-nickname {
+  background-color: limegreen;
+  color: white;
+  border-radius: 40px;
+  font-weight: bolder;
+  padding: 10px;
+}
